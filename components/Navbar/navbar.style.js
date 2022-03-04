@@ -21,8 +21,8 @@ export const NavigationHome = styled.button`
   text-align: center;
   text-decoration: none;
   float: left;
-  padding: 0 1rem;
   cursor: pointer;
+  width: 132px;
 
   &:is(:hover, :focus) {
     filter: brightness(80%);
@@ -30,7 +30,11 @@ export const NavigationHome = styled.button`
 
   @media (max-width: 700px) {
     width: 50%;
-    padding: 0;
+  }
+
+  @media (max-width: 370px) {
+    width: 25%;
+    font-size: 12px;
   }
 `;
 
@@ -95,7 +99,7 @@ export const NavigationDropdown = styled.button`
 
     svg:nth-child(2) {
       opacity: ${props => props.isOpen ? 0 : 1};
-      transform: scale(${props => props.isOpen ? 0 : 1});
+      transform: scale(${props => props.isOpen ? 0 : 0.8});
     }
   }
 

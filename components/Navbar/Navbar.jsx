@@ -9,10 +9,10 @@ import {
     DropdownText,
     DropdownMenu,
     DropdownSettings,
-    RightBar, NavigationButtonLogin, SettingsList
+    RightBar, NavigationButtonLogin
 } from "./navbar.style";
+import OptionsList from "./OptionsList";
 import {useState} from "react";
-import THEMES from "../../util/themes/theme";
 import {FAbox} from "../useful-components.style";
 
 export default ({changeTheme}) => {
@@ -37,18 +37,19 @@ export default ({changeTheme}) => {
                     </NavigationHome>
                 </Link>
                 <RightBar>
-                    <Link href="/login">
-                        <NavigationLogin>
+                    <NavigationLogin>
+                        <Link href="/login">
                             <NavigationButtonLogin>
-                                <FAbox faBox={{height: "1.25rem", display: "inline-block"}} faBoxSvg={{position: "relative"}}>
-                                    <FontAwesomeIcon icon="fa-solid fa-circle-user" />
+                                <FAbox faBox={{height: "1.25rem", display: "inline-block"}}
+                                       faBoxSvg={{position: "relative"}}>
+                                    <FontAwesomeIcon icon="fa-solid fa-circle-user"/>
                                 </FAbox>
                                 <span>
                                     Login
                                 </span>
                             </NavigationButtonLogin>
-                        </NavigationLogin>
-                    </Link>
+                        </Link>
+                    </NavigationLogin>
                     <NavigationDropdown onClick={changeMenuState} isOpen={isMenuOpen}>
                         <FAbox>
                             <FontAwesomeIcon icon={["fas", "xmark"]}/>
@@ -71,22 +72,7 @@ export default ({changeTheme}) => {
                             </DropdownItem>
                         </Link>
                         <DropdownSettings>
-                            {isMenuOpen && <SettingsList>
-                                <DropdownItem onClick={() => {
-                                    changeTheme(THEMES.LIGHT);
-                                }}>
-                                    <DropdownText>
-                                        LIGHT
-                                    </DropdownText>
-                                </DropdownItem>
-                                <DropdownItem onClick={() => {
-                                    changeTheme(THEMES.DARK);
-                                }}>
-                                    <DropdownText>
-                                        DARK
-                                    </DropdownText>
-                                </DropdownItem>
-                            </SettingsList>}
+                            <OptionsList changeTheme={changeTheme}/>
                         </DropdownSettings>
                     </DropdownMenu>}
                 </RightBar>

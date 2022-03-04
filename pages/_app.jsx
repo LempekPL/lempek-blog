@@ -27,7 +27,7 @@ const OPTIONS = {
 }
 
 const GlobalStyles = createGlobalStyle`
-  body {
+  html, body {
     background: ${props => props.theme.background};
   }
 `
@@ -37,17 +37,16 @@ export default function App({Component, pageProps}) {
     const [themeName, setThemeName] = useState(THEMES.DARK);
 
     // change to save theme
-    useEffect(() => setThemeName(getCookie("THEME")), []);
+    useEffect(() => setThemeName(getCookie("NEXT_THEME")), []);
 
     // callback for changing theme from another component
     const changeTheme = (themeName) => {
         setThemeName(themeName);
-        setCookies("THEME", themeName, OPTIONS);
+        setCookies("NEXT_THEME", themeName, OPTIONS);
     }
 
     const router = useRouter()
     const {t, lang} = useTranslation("common");
-    const lem = t("lempek");
 
     return (
         <>
@@ -64,24 +63,16 @@ export default function App({Component, pageProps}) {
                 }}>LIGHT</ThemeButton>
                 <ThemeButton onClick={() => {
                     setThemeName(THEMES.DARK);
-                    setCookies("THEME", THEMES.DARK, OPTIONS);
+                    setCookies("NEXT_THEME", THEMES.DARK, OPTIONS);
                 }}>DARK</ThemeButton>
                 <ThemeButton onClick={() => {
                     setThemeName(THEMES.AMOLED);
-                    setCookies("THEME", THEMES.AMOLED, OPTIONS);
+                    setCookies("NEXT_THEME", THEMES.AMOLED, OPTIONS);
                 }}>AMOLED</ThemeButton>
                 <ThemeButton onClick={() => {
                     setThemeName(THEMES.LEMPEK);
-                    setCookies("THEME", THEMES.LEMPEK, OPTIONS);
-                }}>{lem}</ThemeButton>
-                <Link
-                    href="/"
-                    locale={router.locale === "en" ? "pl" : "en"}
-                >
-                    <button onClick={() => setCookies("NEXT_LOCALE", router.locale === "en" ? "pl" : "en", OPTIONS)}>
-                        aaaa
-                    </button>
-                </Link>
+                    setCookies("NEXT_THEME", THEMES.LEMPEK, OPTIONS);
+                }}>{t("lempek")}</ThemeButton>
             </ThemeProvider>
         </>
     )

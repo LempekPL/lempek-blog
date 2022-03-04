@@ -5,6 +5,7 @@ body {
   margin: 0;
   font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   transition: 300ms;
+  background-color: #000;
 }
 
 .move-content-under-navbar {
