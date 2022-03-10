@@ -1,7 +1,5 @@
 import {useEffect, useState} from "react";
-import {useRouter} from "next/router";
 import Head from "next/head";
-import Link from "next/link";
 // cookies
 import {getCookie, setCookies} from "cookies-next";
 // loading icons
@@ -32,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
   }
 `
 
-export default function App({Component, pageProps}) {
+const App = ({Component, pageProps}) => {
     // set default theme
     const [themeName, setThemeName] = useState(THEMES.DARK);
 
@@ -45,8 +43,7 @@ export default function App({Component, pageProps}) {
         setCookies("NEXT_THEME", themeName, OPTIONS);
     }
 
-    const router = useRouter()
-    const {t, lang} = useTranslation("common");
+    const {t} = useTranslation("common");
 
     return (
         <>
@@ -81,3 +78,5 @@ export default function App({Component, pageProps}) {
 const ThemeButton = styled.button`
   margin: 0.25rem;
 `;
+
+export default App;

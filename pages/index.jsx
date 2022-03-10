@@ -1,9 +1,8 @@
 import {TSpan} from "../components/useful-components.style";
 import useTranslation from "next-translate/useTranslation";
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
-export default () => {
-    const {t, lang} = useTranslation("common");
+const Index = () => {
+    const {t} = useTranslation("common");
     const lem = t("lempek");
 
     return <>
@@ -11,3 +10,4 @@ export default () => {
         <button>{lem}</button>
     </>
 }
+export default Index;

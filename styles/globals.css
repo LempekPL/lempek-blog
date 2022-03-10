@@ -1,17 +1,25 @@
 html,
 body {
-  --navbar-height: 3rem;
-  padding: 0;
-  margin: 0;
-  font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  transition: 300ms;
-  background-color: #000;
+    --navbar-height: 3rem;
+
+    padding: 0;
+    margin: 0;
+    font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    transition: 300ms;
+    background-color: #000;
 }
 
-.move-content-under-navbar {
-  margin-bottom: var(--navbar-height);
+@media (max-width: 500px) {
+    html, body {
+        --navbar-height: 4rem;
+    }
 }
 
 .bold {
-  font-weight: bold;
+    font-weight: bold;
+}
+
+.flex-break {
+    flex-basis: 100%;
+    height: 0;
 }
