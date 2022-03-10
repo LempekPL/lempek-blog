@@ -80,7 +80,7 @@ const Navbar = ({changeTheme}) => {
                     </DropdownButton>
                 </Link>
                 <DropdownSettings>
-                    <OptionsList changeTheme={changeTheme} ref={themeAndLang}/>
+                    <OptionsList changeTheme={changeTheme} ref={themeAndLang} isMenuOpen={isMenuOpen}/>
                 </DropdownSettings>
             </DropdownMenu>
         </>

@@ -38,7 +38,7 @@ class useStator {
     };
 }
 
-const OptionsList = forwardRef(({changeTheme: changeTH, isMain}, ref) => {
+const OptionsList = forwardRef(({changeTheme: changeTH, isMain, isMenuOpen}, ref) => {
     const {t, lang} = useTranslation("navbar");
     const [isThemeState, setThemeState] = useState(false);
     const [isLangState, setLangState] = useState(false);
@@ -72,7 +72,7 @@ const OptionsList = forwardRef(({changeTheme: changeTH, isMain}, ref) => {
     return (
         <>
             <div>
-                <OptionButton stator={themeMenu} translation={t("theme")}/>
+                <OptionButton stator={themeMenu} isMenuOpen={isMenuOpen} translation={t("theme")}/>
                 <SettingsList isOpen={themeMenu.isOpen()}>
                     <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("light")} fun={changeTheme} val={THEMES.LIGHT}/>
                     <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("dark")} fun={changeTheme} val={THEMES.DARK}/>
@@ -82,7 +82,7 @@ const OptionsList = forwardRef(({changeTheme: changeTH, isMain}, ref) => {
                 </SettingsList>
             </div>
             <div>
-                <OptionButton stator={langMenu} translation={t("language")}/>
+                <OptionButton stator={langMenu} isMenuOpen={isMenuOpen} translation={t("language")}/>
                 <SettingsList isOpen={langMenu.isOpen()}>
                     <SettingButton setValue={lang} isOpen={langMenu.isOpen()} translation={t("en")} fun={changeLocale} val={"en"}/>
                     <SettingButton setValue={lang} isOpen={langMenu.isOpen()} translation={t("pl")} fun={changeLocale} val={"pl"}/>
@@ -92,11 +92,11 @@ const OptionsList = forwardRef(({changeTheme: changeTH, isMain}, ref) => {
     )
 })
 
-const OptionButton = ({stator, translation}) => {
+const OptionButton = ({stator, translation, isMenuOpen}) => {
     return (
         <SettingsButton onClick={() => {
             stator.changeState();
-        }}>
+        }} tabIndex={isMenuOpen ? "0" : "-1"}>
             <OptionTextSelector>
                 {translation}
                 <FAsettings isOpen={stator.isOpen()} faBox={{
