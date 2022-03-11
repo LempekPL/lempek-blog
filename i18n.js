@@ -1,18 +1,24 @@
 module.exports = {
     "defaultLocale": "en",
-    "locales": ["en", "pl"],
+    "locales": ["en", "pl", "de"],
     "pages": {
-        "*": ["common", "navbar"]
+        "*": ["common", "navbar"],
+        "/changelog": ["changelog"],
+        "/about": ["about"]
     },
     "loadLocaleFrom": (lang, ns) => import(`./public/locales/${lang}/${ns}.json`).then((m) => m.default),
-    domains: [
+    "domains": [
         {
-            domain: "lempek.dev",
-            defaultLocale: "en",
+            "domain": "lempek.dev",
+            "defaultLocale": "en",
         },
         {
-            domain: "pl.lempek.dev",
-            defaultLocale: "pl",
+            "domain": "pl.lempek.dev",
+            "defaultLocale": "pl",
+        },
+        {
+            "domain": "de.lempek.dev",
+            "defaultLocale": "de",
         },
     ],
 }
