@@ -55,21 +55,6 @@ const App = ({Component, pageProps}) => {
                 <Navbar changeTheme={changeTheme}/>
                 <GlobalStyles/>
                 <Component {...pageProps} />
-                <ThemeButton onClick={() => {
-                    changeTheme(THEMES.LIGHT);
-                }}>LIGHT</ThemeButton>
-                <ThemeButton onClick={() => {
-                    setThemeName(THEMES.DARK);
-                    setCookies("NEXT_THEME", THEMES.DARK, OPTIONS);
-                }}>DARK</ThemeButton>
-                <ThemeButton onClick={() => {
-                    setThemeName(THEMES.AMOLED);
-                    setCookies("NEXT_THEME", THEMES.AMOLED, OPTIONS);
-                }}>AMOLED</ThemeButton>
-                <ThemeButton onClick={() => {
-                    setThemeName(THEMES.LEMPEK);
-                    setCookies("NEXT_THEME", THEMES.LEMPEK, OPTIONS);
-                }}>{t("lempek")}</ThemeButton>
             </ThemeProvider>
         </>
     )
