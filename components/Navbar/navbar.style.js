@@ -43,7 +43,6 @@ export const NavigationButtonLogin = styled.button`
   padding: 0 0.5rem;
   margin: 0 1rem;
   height: calc(var(--navbar-height) * 0.75);
-  transition: 300ms;
   font-size: ${props => props.lang === "pl" ? "1.2rem" : "1.5rem"};
   text-decoration: none;
   cursor: pointer;
@@ -158,4 +157,31 @@ export const DropdownText = styled.span`
 
 export const DropdownSettings = styled.div`
   border-top: 1px solid ${props => props.theme.dropdown_settings_border};
+`;
+
+export const EastereggBundev = styled.div`
+  position: absolute;
+  left: 2rem;
+  top: -0.3rem;
+  display: flex;
+  align-items: flex-start;
+  z-index: -1;
+  transition: 300ms;
+  outline: none;
+  ${props => props.clicked > 50 ? "transform: translateX(100%)" : ""};
+  
+  img {
+    height: calc(var(--navbar-height) + 0.5rem);
+    transform: rotate(25deg);
+  }
+
+  span {
+    margin-top: 0.5rem;
+    font-size: 20px;
+    color: ${props => props.theme.navbar_text_button}
+  }
+  
+  &:focus-visible {
+    transform: translateX(100%);
+  }
 `;

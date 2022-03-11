@@ -6,7 +6,16 @@ export const TSpan = styled.span`
 
 export const Box = styled.div`
   padding: 1rem;
-  background-color: ${props => props.boxColor || props.theme.background_box};
+  background-color: ${props => props?.box?.backgroundColor || props.theme.background_box};
+  width: ${props => props?.box?.width || "60%"};
+  border-radius: ${props => props?.box?.borderRadius || "unset"};
+  margin: 0 auto;
+  overflow: auto;
+
+  @media (max-width: ${props => props?.boxChange?.width || "99999999px"}) {
+    width: ${props => props?.boxChange?.style?.width || props?.box?.width || "60%"};
+    border-radius: ${props => props?.boxChange?.style?.borderRadius || props?.box?.borderRadius || "unset"};
+  }
 `;
 
 export const FAbox = styled.div`
@@ -19,6 +28,7 @@ export const FAbox = styled.div`
   overflow: hidden;
   align-items: center;
   justify-content: center;
+  box-sizing: unset;
 
   @media (max-width: ${props => props?.faRemove?.width || "99999999px"}) {
     display: ${props => props?.faRemove?.langs.includes(props?.lang) ? "none" : props?.faBox?.display || "block"};

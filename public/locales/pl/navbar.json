@@ -2,6 +2,7 @@
   "login": "Zaloguj się",
   "home" : "Strona Główna",
   "about": "O mnie",
+  "changelog": "Dziennik zmian",
   "theme": "Motyw",
   "light": "Jasny",
   "dark": "Ciemny",
@@ -10,5 +11,6 @@
   "lunar": "Lunar",
   "language": "Język",
   "pl": "Polski",
-  "en": "Angielski"
+  "en": "English",
+  "de": "Deutsch"
 }

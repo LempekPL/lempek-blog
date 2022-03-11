@@ -9,7 +9,7 @@ import {
     DropdownButton,
     DropdownSettings,
     RightSide,
-    NavigationButtonLogin
+    NavigationButtonLogin, EastereggBundev
 } from "./navbar.style";
 import OptionsList from "./OptionsList";
 import {useRef, useState} from "react";
@@ -18,17 +18,21 @@ import useTranslation from "next-translate/useTranslation";
 
 const Navbar = ({changeTheme}) => {
     const {t, lang} = useTranslation("navbar");
+    const [clicked, setClick] = useState(0);
+    const addClick = () => setClick(clicked+1);
+    const resetClick = () => setClick(0);
 
     const [isMenuOpen, setOpenMenu] = useState(false);
     const changeMenuState = () => {
         if (isMenuOpen) {
-            themeAndLang.current.close()
+            themeAndLang.current.close();
         }
         setOpenMenu(!isMenuOpen);
     };
     const closeMenu = () => {
         setOpenMenu(false);
-        themeAndLang.current.close()
+        themeAndLang.current.close();
+        resetClick();
     };
 
     const themeAndLang = useRef();
@@ -43,6 +47,10 @@ const Navbar = ({changeTheme}) => {
                             </span>
                     </NavigationHome>
                 </Link>
+                <EastereggBundev tabIndex={"0"} clicked={clicked}>
+                    <img src={"/images/bunDev.svg"} alt="BunDev"/>
+                    <span>HI!</span>
+                </EastereggBundev>
                 <RightSide>
                     <Link href={"/login"} passHref>
                         <NavigationButtonLogin lang={lang}>
@@ -56,7 +64,7 @@ const Navbar = ({changeTheme}) => {
                             <span>{t("login")}</span>
                         </NavigationButtonLogin>
                     </Link>
-                    <NavigationDropdown onClick={changeMenuState} isOpen={isMenuOpen}>
+                    <NavigationDropdown onClick={() => {changeMenuState(); addClick();}} isOpen={isMenuOpen}>
                         <FAbox>
                             <FontAwesomeIcon icon={["fas", "xmark"]}/>
                             <FontAwesomeIcon icon={["fas", "bars"]}/>
@@ -76,6 +84,13 @@ const Navbar = ({changeTheme}) => {
                     <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
                         <DropdownText>
                             {t("about")}
+                        </DropdownText>
+                    </DropdownButton>
+                </Link>
+                <Link href={"/changelog"} passHref>
+                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                        <DropdownText>
+                            {t("changelog")}
                         </DropdownText>
                     </DropdownButton>
                 </Link>

@@ -2,6 +2,7 @@
   "login": "Login",
   "home" : "Home",
   "about": "About",
+  "changelog": "Changelog",
   "theme": "Theme",
   "light": "Light",
   "dark": "Dark",
@@ -9,6 +10,7 @@
   "lempek": "Lempek",
   "lunar": "Lunar",
   "language": "Language",
-  "pl": "Polish",
-  "en": "English"
+  "pl": "Polski",
+  "en": "English",
+  "de": "Deutsch"
 }
