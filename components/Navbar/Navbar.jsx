@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {
     NavigationBar,
@@ -9,7 +10,8 @@ import {
     DropdownButton,
     DropdownSettings,
     RightSide,
-    NavigationButtonLogin, EastereggBundev
+    NavigationButtonLogin,
+    EastereggBundev
 } from "./navbar.style";
 import OptionsList from "./OptionsList";
 import {useRef, useState} from "react";
@@ -19,7 +21,7 @@ import useTranslation from "next-translate/useTranslation";
 const Navbar = ({changeTheme}) => {
     const {t, lang} = useTranslation("navbar");
     const [clicked, setClick] = useState(0);
-    const addClick = () => setClick(clicked+1);
+    const addClick = () => setClick(clicked + 1);
     const resetClick = () => setClick(0);
 
     const [isMenuOpen, setOpenMenu] = useState(false);
@@ -48,23 +50,26 @@ const Navbar = ({changeTheme}) => {
                     </NavigationHome>
                 </Link>
                 <EastereggBundev tabIndex={"0"} clicked={clicked}>
-                    <img src={"/images/bunDev.svg"} alt="BunDev"/>
+                    <Image src="/images/bunDev.svg" alt="BunDev" height={"100%"} width={"100%"}/>
                     <span>HI!</span>
                 </EastereggBundev>
                 <RightSide>
                     <Link href={"/login"} passHref>
                         <NavigationButtonLogin lang={lang}>
-                            <FAbox faBox={{
+                            <FAbox box={{
                                 height: lang === "pl" ? "1rem" : "1.25rem",
                                 display: "inline-block",
                                 padding: "0 0.25rem 0 0"
-                            }} faBoxSvg={{position: "relative"}} faRemove={{width: "500px", langs: ["pl"]}} lang={lang}>
+                            }} boxSvg={{position: "relative"}} faRemove={{width: "500px", langs: ["pl"]}} lang={lang}>
                                 <FontAwesomeIcon icon="fa-solid fa-circle-user"/>
                             </FAbox>
                             <span>{t("login")}</span>
                         </NavigationButtonLogin>
                     </Link>
-                    <NavigationDropdown onClick={() => {changeMenuState(); addClick();}} isOpen={isMenuOpen}>
+                    <NavigationDropdown onClick={() => {
+                        changeMenuState();
+                        addClick();
+                    }} isOpen={isMenuOpen}>
                         <FAbox>
                             <FontAwesomeIcon icon={["fas", "xmark"]}/>
                             <FontAwesomeIcon icon={["fas", "bars"]}/>

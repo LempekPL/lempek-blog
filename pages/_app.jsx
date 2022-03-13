@@ -7,13 +7,13 @@ import "../util/fontawesome";
 // global styling
 import "../styles/globals.css";
 // themes
-import styled, {createGlobalStyle, ThemeProvider} from 'styled-components';
+import {createGlobalStyle, ThemeProvider} from 'styled-components';
 import THEMES from "../util/themes/theme";
 import {getTheme} from "../util/themes/getTheme";
 // navbar
 import Navbar from "../components/Navbar";
-// translation
-import useTranslation from 'next-translate/useTranslation'
+// making grid
+import grid, {Grid} from "../components/grid.style";
 // font awesome fix
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -43,8 +43,6 @@ const App = ({Component, pageProps}) => {
         setCookies("NEXT_THEME", themeName, OPTIONS);
     }
 
-    const {t} = useTranslation("common");
-
     return (
         <>
             <ThemeProvider theme={getTheme(themeName)}>
@@ -54,14 +52,12 @@ const App = ({Component, pageProps}) => {
                 </Head>
                 <Navbar changeTheme={changeTheme}/>
                 <GlobalStyles/>
-                <Component {...pageProps} />
+                <Grid>
+                    <Component {...pageProps} />
+                </Grid>
             </ThemeProvider>
         </>
     )
 }
-
-const ThemeButton = styled.button`
-  margin: 0.25rem;
-`;
 
 export default App;

@@ -1,6 +1,6 @@
 export default {
     type: "dark",
-    icon: "./otherFavicons/lempekdesigndark.ico",
+    icon: "/otherFavicons/lempekdesigndark.ico",
 
     navbar_background: "#4b4b4b",
     navbar_button: "#545454",

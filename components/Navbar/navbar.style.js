@@ -10,7 +10,7 @@ export const NavigationBar = styled.nav`
   flex-direction: row;
   width: 100%;
   height: var(--navbar-height);
-  z-index: 1;
+  z-index: 999;
 `;
 
 export const NavigationHome = styled.button`
@@ -117,7 +117,8 @@ export const DropdownMenu = styled.nav`
   flex-wrap: wrap;
   flex-direction: column;
   justify-content: space-between;
-  opacity: 90%;
+  z-index: 998;
+  opacity: 96%;
 
   @media (max-width: 500px) {
     position: absolute;
@@ -169,18 +170,18 @@ export const EastereggBundev = styled.div`
   transition: 300ms;
   outline: none;
   ${props => props.clicked > 50 ? "transform: translateX(100%)" : ""};
-  
+
   img {
-    height: calc(var(--navbar-height) + 0.5rem);
+    height: calc(var(--navbar-height) + 0.5rem) !important;
     transform: rotate(25deg);
   }
 
-  span {
+  span {    
     margin-top: 0.5rem;
     font-size: 20px;
     color: ${props => props.theme.navbar_text_button}
   }
-  
+
   &:focus-visible {
     transform: translateX(100%);
   }

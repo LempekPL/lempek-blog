@@ -3,7 +3,7 @@ import DARK from "./dark";
 export default {
     ...DARK,
     type: "dark",
-    icon: "./otherFavicons/lempekdesigngreen.ico",
+    icon: "/otherFavicons/lempekdesigngreen.ico",
 
     navbar_background: "#1c540a",
     navbar_button: "#186c00",

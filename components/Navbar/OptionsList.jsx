@@ -38,7 +38,7 @@ class useStator {
     };
 }
 
-const OptionsList = forwardRef(({changeTheme: changeTH, isMain, isMenuOpen}, ref) => {
+const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
     const {t, lang} = useTranslation("navbar");
     const [isThemeState, setThemeState] = useState(false);
     const [isLangState, setLangState] = useState(false);
@@ -62,8 +62,8 @@ const OptionsList = forwardRef(({changeTheme: changeTH, isMain, isMenuOpen}, ref
         setCookies("NEXT_LOCALE", localeName, OPTIONS);
     }
 
-    const changeTheme = (themeName) => {
-        changeTH(themeName);
+    const changeTh = (themeName) => {
+        changeTheme(themeName);
         setTheme(themeName);
     }
 
@@ -74,11 +74,11 @@ const OptionsList = forwardRef(({changeTheme: changeTH, isMain, isMenuOpen}, ref
             <div>
                 <OptionButton stator={themeMenu} isMenuOpen={isMenuOpen} translation={t("theme")}/>
                 <SettingsList isOpen={themeMenu.isOpen()}>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("light")} fun={changeTheme} val={THEMES.LIGHT}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("dark")} fun={changeTheme} val={THEMES.DARK}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("amoled")} fun={changeTheme} val={THEMES.AMOLED}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lempek")} fun={changeTheme} val={THEMES.LEMPEK}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lunar")} fun={changeTheme} val={THEMES.LUNAR}/>
+                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("light")} fun={changeTh} val={THEMES.LIGHT}/>
+                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("dark")} fun={changeTh} val={THEMES.DARK}/>
+                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("amoled")} fun={changeTh} val={THEMES.AMOLED}/>
+                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lempek")} fun={changeTh} val={THEMES.LEMPEK}/>
+                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lunar")} fun={changeTh} val={THEMES.LUNAR}/>
                 </SettingsList>
             </div>
             <div>
@@ -99,9 +99,9 @@ const OptionButton = ({stator, translation, isMenuOpen}) => {
         }} tabIndex={isMenuOpen ? "0" : "-1"}>
             <OptionTextSelector>
                 {translation}
-                <FAsettings isOpen={stator.isOpen()} faBox={{
+                <FAsettings isOpen={stator.isOpen()} box={{
                     display: "inline-block"
-                }} faBoxSvg={{position: "relative"}}>
+                }} boxSvg={{position: "relative"}}>
                     <FontAwesomeIcon icon={["fas", "angle-down"]}/>
                 </FAsettings>
             </OptionTextSelector>
@@ -115,12 +115,12 @@ const SettingButton = ({setValue, isOpen, translation, fun, val}) => {
             fun(val);
         }}>
             <OptionText>
-                <FAbox faBox={{
+                <FAbox box={{
                     display: "inline",
                     height: "60%",
                     float: "left",
                     padding: ".5rem"
-                }} faBoxSvg={{position: "relative"}}
+                }} boxSvg={{position: "relative"}}
                 faChange={{style: {padding: ".8rem"}, width: "500px"}}>
                     {setValue === val ? <FontAwesomeIcon icon={["fas", "circle-check"]} /> : <FontAwesomeIcon icon={["far", "circle-xmark"]} />}
                 </FAbox>
