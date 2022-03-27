@@ -99,6 +99,13 @@ const Navbar = ({changeTheme}) => {
                         </DropdownText>
                     </DropdownButton>
                 </Link>
+                <Link href={"/experiments"} passHref>
+                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                        <DropdownText>
+                            {t("experiments")}
+                        </DropdownText>
+                    </DropdownButton>
+                </Link>
                 <DropdownSettings>
                     <OptionsList changeTheme={changeTheme} ref={themeAndLang} isMenuOpen={isMenuOpen}/>
                 </DropdownSettings>

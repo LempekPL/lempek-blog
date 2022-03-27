@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+//&:focus-visible {outline: gray solid 2px;} no use
+//&:focus-visible {outline: red solid 2px;} blocked
+//&:focus-visible {outline: royalblue solid 2px;} useful
+
 export const TSpan = styled.span`
   color: ${props => props.theme.text};
   margin: ${props => props?.text?.margin || "unset"};

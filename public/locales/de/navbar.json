@@ -3,6 +3,8 @@
   "home" : "Startseite",
   "about": "Über Lempek",
   "changelog": "Änderungsprotokoll",
+  "v": "-------------------------",
+  "experiments": "Experiments",
   "theme": "Thema",
   "light": "Licht",
   "dark": "Dunkel",

@@ -3,7 +3,8 @@ const THEMES = {
     DARK: "dark",
     AMOLED: "amoled",
     LEMPEK: "lempek",
-    LUNAR: "lunar"
+    LUNAR: "lunar",
+    HIGH_CONTRAST: "high_contrast"
 }
 
 export default THEMES;

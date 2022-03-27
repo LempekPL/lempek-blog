@@ -4,14 +4,14 @@ import setLanguage from "next-translate/setLanguage";
 import {forwardRef, useEffect, useImperativeHandle, useState} from "react";
 import useTranslation from "next-translate/useTranslation";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {FAbox} from "../useful-components.style";
 import {
     SettingsList,
     OptionTextSelector,
     SettingsButton,
     SettingsItemButton,
-    OptionText,
-    FAsettings
+    FAsettings,
+    OptionIcon,
+    OptionName
 } from "./options.style"
 
 const OPTIONS = {
@@ -38,6 +38,23 @@ class useStator {
     };
 }
 
+const useActiveElement = () => {
+    const [active, setActive] = useState(null);
+
+    const handleFocusIn = (e) => {
+        setActive(document.activeElement);
+    }
+
+    useEffect(() => {
+        document.addEventListener('focusin', handleFocusIn)
+        return () => {
+            document.removeEventListener('focusin', handleFocusIn)
+        };
+    }, [])
+
+    return active;
+}
+
 const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
     const {t, lang} = useTranslation("navbar");
     const [isThemeState, setThemeState] = useState(false);
@@ -45,6 +62,13 @@ const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
     const themeMenu = new useStator(isThemeState, setThemeState);
     const langMenu = new useStator(isLangState, setLangState);
     const [isTheme, setTheme] = useState(THEMES.DARK);
+    const activeElement = useActiveElement();
+    // useEffect(() => {
+    //     if (activeElement) {
+    //         activeElement.value && console.log(activeElement.value);
+    //     }
+    //     console.log(activeElement);
+    // }, [activeElement])
 
     // allow closing options in parent
     useImperativeHandle(ref, () => ({
@@ -67,27 +91,48 @@ const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
         setTheme(themeName);
     }
 
-    useEffect(() => {setTheme(getCookie("NEXT_THEME") || "dark")}, []);
+    useEffect(() => {
+        setTheme(getCookie("NEXT_THEME") || "dark")
+    }, []);
+
+    const buttons = [];
+    for (const themesKey in THEMES) {
+        if (JSON.parse(getCookie("EXPERIMENTS") || "{}")?.theme?.high_contrast !== true && THEMES[themesKey] === "high_contrast") continue;
+        buttons.push(
+            <SettingButton
+                key={THEMES[themesKey]} setValue={isTheme}
+                isOpen={themeMenu.isOpen()} translation={t(THEMES[themesKey])}
+                change={[changeTh, THEMES[themesKey]]}
+                activeElement={activeElement}
+            />
+        )
+    }
+
+    // all languages
+    const langs = ["en", "pl", "de"];
+    const buttonsLang = [];
+    for (const langVal of langs) {
+        if (JSON.parse(getCookie("EXPERIMENTS") || "{}")?.lang?.german !== true && langVal === "de") continue;
+        buttonsLang.push(
+            <SettingButton
+                key={langVal} setValue={lang}
+                isOpen={langMenu.isOpen()} translation={t(langVal)}
+                change={[changeLocale, langVal]}
+                activeElement={activeElement}
+            />
+        )
+    }
 
     return (
         <>
-            <div>
-                <OptionButton stator={themeMenu} isMenuOpen={isMenuOpen} translation={t("theme")}/>
-                <SettingsList isOpen={themeMenu.isOpen()}>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("light")} fun={changeTh} val={THEMES.LIGHT}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("dark")} fun={changeTh} val={THEMES.DARK}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("amoled")} fun={changeTh} val={THEMES.AMOLED}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lempek")} fun={changeTh} val={THEMES.LEMPEK}/>
-                    <SettingButton setValue={isTheme} isOpen={themeMenu.isOpen()} translation={t("lunar")} fun={changeTh} val={THEMES.LUNAR}/>
-                </SettingsList>
-            </div>
-            <div>
-                <OptionButton stator={langMenu} isMenuOpen={isMenuOpen} translation={t("language")}/>
-                <SettingsList isOpen={langMenu.isOpen()}>
-                    <SettingButton setValue={lang} isOpen={langMenu.isOpen()} translation={t("en")} fun={changeLocale} val={"en"}/>
-                    <SettingButton setValue={lang} isOpen={langMenu.isOpen()} translation={t("pl")} fun={changeLocale} val={"pl"}/>
-                </SettingsList>
-            </div>
+            <OptionButton stator={themeMenu} isMenuOpen={isMenuOpen} translation={t("theme")}/>
+            <SettingsList isOpen={themeMenu.isOpen()}>
+                {buttons}
+            </SettingsList>
+            <OptionButton stator={langMenu} isMenuOpen={isMenuOpen} translation={t("language")}/>
+            <SettingsList isOpen={langMenu.isOpen()}>
+                {buttonsLang}
+            </SettingsList>
         </>
     )
 })
@@ -109,23 +154,20 @@ const OptionButton = ({stator, translation, isMenuOpen}) => {
     );
 }
 
-const SettingButton = ({setValue, isOpen, translation, fun, val}) => {
+const SettingButton = ({setValue, isOpen, translation, change, activeElement}) => {
     return (
         <SettingsItemButton isOpen={isOpen} tabIndex={isOpen ? "0" : "-1"} onClick={() => {
-            fun(val);
+            change[0](change[1]);
         }}>
-            <OptionText>
-                <FAbox box={{
-                    display: "inline",
-                    height: "60%",
-                    float: "left",
-                    padding: ".5rem"
-                }} boxSvg={{position: "relative"}}
-                faChange={{style: {padding: ".8rem"}, width: "500px"}}>
-                    {setValue === val ? <FontAwesomeIcon icon={["fas", "circle-check"]} /> : <FontAwesomeIcon icon={["far", "circle-xmark"]} />}
-                </FAbox>
+            <OptionIcon>
+                {setValue === change[1] ?
+                    <FontAwesomeIcon icon={["fas", "circle-check"]}/> :
+                    <FontAwesomeIcon icon={["far", "circle-xmark"]}/>
+                }
+            </OptionIcon>
+            <OptionName>
                 {translation}
-            </OptionText>
+            </OptionName>
         </SettingsItemButton>
     );
 }

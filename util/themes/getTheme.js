@@ -1,4 +1,4 @@
-import {AMOLED, DARK, LEMPEK, LUNAR, LIGHT} from "./index";
+import {AMOLED, DARK, LEMPEK, LUNAR, LIGHT, HIGH_CONTRAST} from "./index";
 import THEMES from "./theme";
 
 export const getTheme = themeName => {
@@ -11,6 +11,8 @@ export const getTheme = themeName => {
             return LUNAR;
         case THEMES.AMOLED:
             return AMOLED;
+        case THEMES.HIGH_CONTRAST:
+            return HIGH_CONTRAST;
         default:
             return DARK;
     }

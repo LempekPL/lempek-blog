@@ -27,6 +27,11 @@ export const NavigationHome = styled.button`
     filter: brightness(80%);
   }
 
+  &:focus-visible {
+    outline: royalblue solid 2px;
+    outline-offset: -2px;
+  }
+
   @media (max-width: 500px) {
     padding: 0 2rem;
   }
@@ -38,8 +43,8 @@ export const NavigationHome = styled.button`
 
 export const NavigationButtonLogin = styled.button`
   background-color: ${props => props.theme.navbar_background};
-  color: royalblue;
-  border: 0.1rem solid royalblue;
+  color: lime;
+  border: 0.1rem solid lime;
   padding: 0 0.5rem;
   margin: 0 1rem;
   height: calc(var(--navbar-height) * 0.75);
@@ -47,6 +52,10 @@ export const NavigationButtonLogin = styled.button`
   text-decoration: none;
   cursor: pointer;
   filter: ${props => props.theme.type === "light" ? "brightness(100%)" : "brightness(80%)"};
+
+  &:focus-visible {
+    outline: royalblue solid 2px;
+  }
 
   &:is(:hover, :focus-visible) {
     filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
@@ -79,6 +88,11 @@ export const NavigationDropdown = styled.button`
   };
   overflow: hidden;
 
+  &:focus-visible {
+    outline: royalblue solid 2px;
+    outline-offset: -2px;
+  }
+
   div {
     svg {
       transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
@@ -104,6 +118,7 @@ export const NavigationDropdown = styled.button`
 `;
 
 export const DropdownMenu = styled.nav`
+  background-color: ${props => props.theme.dropdown_button_background};
   color: ${props => props.theme.dropdown_text_button};
   transition: 300ms ease-in-out;
   position: absolute;
@@ -114,9 +129,7 @@ export const DropdownMenu = styled.nav`
   top: var(--navbar-height);
   transform: ${props => props.isOpen ? "translateY(0)" : "translateY(-100%)"};
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
-  justify-content: space-between;
   z-index: 998;
   opacity: 96%;
 
@@ -137,13 +150,19 @@ export const DropdownButton = styled.button`
   padding: 0 0.5rem;
   z-index: 2;
   transition: 100ms;
+  outline-offset: -2px;
 
   @media (max-width: 500px) {
     height: 4rem;
   }
+  
+  :focus-visible {
+    outline: royalblue solid 2px;
+  }
 
-  &:is(:hover, :focus-visible) {
+  :is(:hover, :focus-visible) {
     filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
+    font-weight: bold;
   }
 `;
 
@@ -176,7 +195,7 @@ export const EastereggBundev = styled.div`
     transform: rotate(25deg);
   }
 
-  span {    
+  span {
     margin-top: 0.5rem;
     font-size: 20px;
     color: ${props => props.theme.navbar_text_button}
