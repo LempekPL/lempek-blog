@@ -38,6 +38,7 @@ export const Name = styled.div`
 export const LempekImage = styled.div`
   grid-area: pic;
   height: 14rem;
+  position: relative;
   width: 14rem;
 
   img {
