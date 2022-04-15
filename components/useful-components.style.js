@@ -12,6 +12,28 @@ export const TSpan = styled.span`
   align-self: ${props => props?.text?.alignSelf || "unset"};
 `;
 
+export const Span = styled.span`
+  color: ${props => props.theme.text};
+`;
+
+export const RemoveDecos = styled.span`
+  text-decoration: none;
+  * {
+    text-decoration: none;
+  }
+`;
+
+export const NoButton = styled.button`
+  text-decoration: inherit;
+  border: inherit;
+  color: inherit;
+  background-color: inherit;
+  font-size: inherit;
+  margin: inherit;
+  display: inherit;
+  text-decoration: inherit;
+`;
+
 export const Box = styled.div`
   padding: 1rem;
   transition: 300ms;
