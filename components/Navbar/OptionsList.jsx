@@ -13,68 +13,24 @@ import {
     OptionIcon,
     OptionName
 } from "./options.style"
+import useToggle from "../../hooks/useToggle";
 
 const OPTIONS = {
     secure: process.env.IN_DEV === "false",
     sameSite: "lax"
-}
+};
 
-class useStator {
-    constructor(is, set) {
-        this.is = is;
-        this.set = set;
-    }
-
-    isOpen() {
-        return this.is;
-    }
-
-    changeState() {
-        this.set(!this.is);
-    };
-
-    close() {
-        this.set(false);
-    };
-}
-
-const useActiveElement = () => {
-    const [active, setActive] = useState(null);
-
-    const handleFocusIn = (e) => {
-        setActive(document.activeElement);
-    }
-
-    useEffect(() => {
-        document.addEventListener('focusin', handleFocusIn)
-        return () => {
-            document.removeEventListener('focusin', handleFocusIn)
-        };
-    }, [])
-
-    return active;
-}
-
-const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
+const OptionsList = forwardRef(({changeTheme: chT, isMain, isMenuOpen}, ref) => {
     const {t, lang} = useTranslation("navbar");
-    const [isThemeState, setThemeState] = useState(false);
-    const [isLangState, setLangState] = useState(false);
-    const themeMenu = new useStator(isThemeState, setThemeState);
-    const langMenu = new useStator(isLangState, setLangState);
+    const [openTheme, toggleTheme] = useToggle();
+    const [openLang, toggleLang] = useToggle();
     const [isTheme, setTheme] = useState(THEMES.DARK);
-    const activeElement = useActiveElement();
-    // useEffect(() => {
-    //     if (activeElement) {
-    //         activeElement.value && console.log(activeElement.value);
-    //     }
-    //     console.log(activeElement);
-    // }, [activeElement])
 
     // allow closing options in parent
     useImperativeHandle(ref, () => ({
         close() {
-            themeMenu.close();
-            langMenu.close();
+            toggleTheme(false);
+            toggleLang(false);
         },
     }))
 
@@ -86,8 +42,8 @@ const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
         setCookies("NEXT_LOCALE", localeName, OPTIONS);
     }
 
-    const changeTh = (themeName) => {
-        changeTheme(themeName);
+    const changeTheme = (themeName) => {
+        chT(themeName);
         setTheme(themeName);
     }
 
@@ -101,9 +57,8 @@ const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
         buttons.push(
             <SettingButton
                 key={THEMES[themesKey]} setValue={isTheme}
-                isOpen={themeMenu.isOpen()} translation={t(THEMES[themesKey])}
-                change={[changeTh, THEMES[themesKey]]}
-                activeElement={activeElement}
+                isOpen={openTheme} translation={t(THEMES[themesKey])}
+                change={[changeTheme, THEMES[themesKey]]}
             />
         )
     }
@@ -111,40 +66,39 @@ const OptionsList = forwardRef(({changeTheme, isMain, isMenuOpen}, ref) => {
     // all languages
     const langs = ["en", "pl", "de"];
     const buttonsLang = [];
-    for (const langVal of langs) {
-        if (JSON.parse(getCookie("EXPERIMENTS") || "{}")?.lang?.german !== true && langVal === "de") continue;
+    for (const langValue of langs) {
+        if (JSON.parse(getCookie("EXPERIMENTS") || "{}")?.lang?.german !== true && langValue === "de") continue;
         buttonsLang.push(
             <SettingButton
-                key={langVal} setValue={lang}
-                isOpen={langMenu.isOpen()} translation={t(langVal)}
-                change={[changeLocale, langVal]}
-                activeElement={activeElement}
+                key={langValue} setValue={lang}
+                isOpen={openLang} translation={t(langValue)}
+                change={[changeLocale, langValue]}
             />
         )
     }
 
     return (
         <>
-            <OptionButton stator={themeMenu} isMenuOpen={isMenuOpen} translation={t("theme")}/>
-            <SettingsList isOpen={themeMenu.isOpen()}>
+            <OptionButton toggle={toggleTheme} isOpen={openTheme} isMenuOpen={isMenuOpen} translation={t("theme")}/>
+            <SettingsList isOpen={openTheme}>
                 {buttons}
             </SettingsList>
-            <OptionButton stator={langMenu} isMenuOpen={isMenuOpen} translation={t("language")}/>
-            <SettingsList isOpen={langMenu.isOpen()}>
+            <OptionButton toggle={toggleLang} isOpen={openLang} isMenuOpen={isMenuOpen} translation={t("language")}/>
+            <SettingsList isOpen={openLang}>
                 {buttonsLang}
             </SettingsList>
         </>
     )
 })
 
-const OptionButton = ({stator, translation, isMenuOpen}) => {
+const OptionButton = ({toggle, translation, isOpen, isMenuOpen}) => {
     return (
         <SettingsButton onClick={() => {
-            stator.changeState();
+            toggle();
         }} tabIndex={isMenuOpen ? "0" : "-1"}>
             <OptionTextSelector>
                 {translation}
-                <FAsettings isOpen={stator.isOpen()} box={{
+                <FAsettings isOpen={isOpen} box={{
                     display: "inline-block"
                 }} boxSvg={{position: "relative"}}>
                     <FontAwesomeIcon icon={["fas", "angle-down"]}/>
@@ -154,7 +108,7 @@ const OptionButton = ({stator, translation, isMenuOpen}) => {
     );
 }
 
-const SettingButton = ({setValue, isOpen, translation, change, activeElement}) => {
+const SettingButton = ({setValue, isOpen, translation, change}) => {
     return (
         <SettingsItemButton isOpen={isOpen} tabIndex={isOpen ? "0" : "-1"} onClick={() => {
             change[0](change[1]);

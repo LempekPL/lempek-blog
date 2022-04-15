@@ -17,6 +17,7 @@ import OptionsList from "./OptionsList";
 import {useRef, useState} from "react";
 import {FAbox} from "../useful-components.style";
 import useTranslation from "next-translate/useTranslation";
+import useToggle from "../../hooks/useToggle";
 
 const Navbar = ({changeTheme}) => {
     const {t, lang} = useTranslation("navbar");
@@ -24,20 +25,14 @@ const Navbar = ({changeTheme}) => {
     const addClick = () => setClick(clicked + 1);
     const resetClick = () => setClick(0);
 
-    const [isMenuOpen, setOpenMenu] = useState(false);
-    const changeMenuState = () => {
-        if (isMenuOpen) {
-            themeAndLang.current.close();
-        }
-        setOpenMenu(!isMenuOpen);
-    };
-    const closeMenu = () => {
-        setOpenMenu(false);
+    const [isMenuOpen, toggleMenu] = useToggle(false);
+    const themeAndLang = useRef();
+
+    const closer = () => {
+        toggleMenu(false);
         themeAndLang.current.close();
         resetClick();
-    };
-
-    const themeAndLang = useRef();
+    }
 
     return (
         <>
@@ -67,8 +62,9 @@ const Navbar = ({changeTheme}) => {
                         </NavigationButtonLogin>
                     </Link>
                     <NavigationDropdown onClick={() => {
-                        changeMenuState();
+                        toggleMenu();
                         addClick();
+                        if (isMenuOpen) themeAndLang.current.close();
                     }} isOpen={isMenuOpen}>
                         <FAbox>
                             <FontAwesomeIcon icon={["fas", "xmark"]}/>
@@ -79,28 +75,28 @@ const Navbar = ({changeTheme}) => {
             </NavigationBar>
             <DropdownMenu isOpen={isMenuOpen}>
                 <Link href="/" passHref>
-                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                    <DropdownButton onClick={closer} tabIndex={isMenuOpen ? "0" : "-1"}>
                         <DropdownText>
                             {t("home")}
                         </DropdownText>
                     </DropdownButton>
                 </Link>
                 <Link href={"/about"} passHref>
-                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                    <DropdownButton onClick={closer} tabIndex={isMenuOpen ? "0" : "-1"}>
                         <DropdownText>
                             {t("about")}
                         </DropdownText>
                     </DropdownButton>
                 </Link>
                 <Link href={"/changelog"} passHref>
-                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                    <DropdownButton onClick={closer} tabIndex={isMenuOpen ? "0" : "-1"}>
                         <DropdownText>
                             {t("changelog")}
                         </DropdownText>
                     </DropdownButton>
                 </Link>
                 <Link href={"/experiments"} passHref>
-                    <DropdownButton onClick={closeMenu} tabIndex={isMenuOpen ? "0" : "-1"}>
+                    <DropdownButton onClick={closer} tabIndex={isMenuOpen ? "0" : "-1"}>
                         <DropdownText>
                             {t("experiments")}
                         </DropdownText>

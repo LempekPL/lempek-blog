@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const NavigationBar = styled.nav`
   background: ${props => props.theme.navbar_background};
   transition: 300ms;
-  position: sticky;
+  position: fixed;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -95,7 +95,7 @@ export const NavigationDropdown = styled.button`
 
   div {
     svg {
-      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+      transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
 
       &:nth-child(1) {
         opacity: ${props => props.isOpen ? 1 : 0};
@@ -121,8 +121,9 @@ export const DropdownMenu = styled.nav`
   background-color: ${props => props.theme.dropdown_button_background};
   color: ${props => props.theme.dropdown_text_button};
   transition: 300ms ease-in-out;
-  position: absolute;
+  position: fixed;
   right: 0;
+  width: 15rem;
   border-width: 0 1px 1px;
   border-style: solid;
   border-color: ${props => props.theme.dropdown_settings_border};
@@ -158,11 +159,11 @@ export const DropdownButton = styled.button`
   
   :focus-visible {
     outline: royalblue solid 2px;
+    font-weight: bold;
   }
 
   :is(:hover, :focus-visible) {
     filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
-    font-weight: bold;
   }
 `;
 
