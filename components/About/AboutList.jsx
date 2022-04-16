@@ -1,7 +1,7 @@
 import {Links, Pointer, LinkBox, InfoBox, BrandIcons} from "./about-list.style";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {useState} from "react";
-// import SocialPage from "./SocialPage";
+import SocialPage from "../SocialPage";
 
 const socials = {
     0: "github",
@@ -32,7 +32,7 @@ const AboutList = ({data}) => {
             {/* minToLink 1 => 16, 2 => 15 .. 9 => 8 .. 16 => 1 */}
             <Pointer minToLink={14} selectedLink={getSelectedLink}/>
             <LinkBox>
-                {/*<SocialPage social={socials[getSelectedLink]} data={data}/>*/}
+                <SocialPage social={socials[getSelectedLink]} data={data}/>
             </LinkBox>
         </InfoBox>
     </>)

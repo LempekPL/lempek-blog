@@ -1,8 +1,32 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 //&:focus-visible {outline: gray solid 2px;} no use
 //&:focus-visible {outline: red solid 2px;} blocked
 //&:focus-visible {outline: royalblue solid 2px;} useful
+
+export const linkColoring = (c) => {
+    return css`
+      ${c} {
+        color: #003bb4;
+      }
+
+      :is(:hover, :focus-visible) {
+        ${c} {
+          color: #00288c;
+        }
+      }
+
+      :visited {
+        ${c} {
+          color: #551a8b;
+        }
+
+        :is(:hover, :focus-visible) ${c} {
+          color: #3d1265;
+        }
+      }
+    `;
+}
 
 export const TSpan = styled.span`
   color: ${props => props.theme.text};
