@@ -13,7 +13,7 @@ import {getTheme} from "../util/themes/getTheme";
 // navbar
 import Navbar from "../components/Navbar";
 // making grid
-import grid, {Grid} from "../components/grid.style";
+import {Grid} from "../components/grid.style";
 // font awesome fix
 import { config } from '@fortawesome/fontawesome-svg-core'
 import '@fortawesome/fontawesome-svg-core/styles.css'
@@ -28,7 +28,7 @@ const GlobalStyles = createGlobalStyle`
   html, body {
     background: ${props => props.theme.background};
   }
-`
+`;
 
 const App = ({Component, pageProps}) => {
     // set default theme
