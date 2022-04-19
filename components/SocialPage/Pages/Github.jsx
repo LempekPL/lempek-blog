@@ -2,39 +2,39 @@ import Image from "next/image";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     Activity,
-    DivImage,
-    Header,
-    IconSpanLink,
-    Name,
+    SideBars,
+    SideText,
     RecentActivity,
     RepoBox,
     RepoDesc,
     RepoName,
     RepoInfo,
     RepoStatusPlate,
-    SideBars,
-    SideText,
     RepoLink,
     RepoPlates,
     RepoLang,
-    RepoLangColor, RepoUpdated
+    RepoLangColor,
+    RepoUpdated
 } from "./github.style";
-import colors from "../../util/githubColors.json";
+import colors from "../../../util/githubColors.json";
 import useTranslation from "next-translate/useTranslation";
 import {getCookie} from "cookies-next";
+import {DivImage, Header, IconSpanLink, Name} from "./universal.style";
 
 const Github = ({data}) => {
     data.repos = data.repos.filter((obj) => obj.name !== "LempekPL").sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
 
     return (<>
-        <Header href={data.user.html_url} tabIndex={0}>
-            <DivImage>
-                <Image src={data.user.avatar_url} alt="Lempek" layout="fill" priority={true}/>
-            </DivImage>
-            <IconSpanLink>
-                <FontAwesomeIcon icon={["fas", "link"]}/>
-            </IconSpanLink>
-            <Name>{data.user.name}</Name>
+        <Header href={data.user.html_url} target="_blank" tabIndex={-1}>
+            <button>
+                <DivImage>
+                    <Image src={data.user.avatar_url} alt="Lempek" layout="fill" priority={true}/>
+                </DivImage>
+                <IconSpanLink>
+                    <FontAwesomeIcon icon={["fas", "link"]}/>
+                </IconSpanLink>
+                <Name>{data.user.name}</Name>
+            </button>
         </Header>
         <SideText>
             <SideBars>Repositories: {data.user.public_repos + data.user.total_private_repos}</SideBars>
@@ -74,15 +74,15 @@ const GithubBox = ({repo}) => {
             <RepoLang><RepoLangColor color={colors[repo.language]?.color || "#ededed"}/> {repo.language}</RepoLang>
             <RepoUpdated>
                 {t("updatedAt", {
-                        date: new Date(repo.updated_at).toLocaleString(getCookie("NEXT_LOCALE") ?? "en", {
-                            year: "numeric",
-                            month: "long",
-                            day: "numeric",
-                            hour: "numeric",
-                            minute: "numeric",
-                            second: "numeric",
-                            timeZoneName: "short"
-                        })
+                    date: new Date(repo.updated_at).toLocaleString(getCookie("NEXT_LOCALE") ?? "en", {
+                        year: "numeric",
+                        month: "long",
+                        day: "numeric",
+                        hour: "numeric",
+                        minute: "numeric",
+                        second: "numeric",
+                        timeZoneName: "short"
+                    })
                 })}
             </RepoUpdated>
         </RepoBox>

@@ -1,11 +1,12 @@
-import Github from "./Github";
+import Github from "./Pages/Github";
+import Linkedin from "./Pages/Linkedin";
 
 const SocialPage = ({social, data}) => {
     switch (social) {
         case "github":
             return <Github data={data}/>
         case "linkedin":
-            return <LinkedIn/>
+            return <Linkedin/>
         case "youtube":
             return <YouTube/>
         case "twitch":
@@ -22,12 +23,6 @@ const SocialPage = ({social, data}) => {
             return <div>No social page found</div>
     }
 };
-
-const LinkedIn = () => {
-    return (<>
-        bbbbb
-    </>)
-}
 
 const YouTube = () => {
     return (<>
