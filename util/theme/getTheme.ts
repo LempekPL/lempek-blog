@@ -1,7 +1,8 @@
 import {AMOLED, DARK, LEMPEK, LUNAR, LIGHT, HIGH_CONTRAST} from "./index";
 import THEMES from "./theme";
+import type {Theme} from "../../types/theme";
 
-export const getTheme = themeName => {
+export const getTheme: (_: string) => Theme = themeName => {
     switch (themeName) {
         case THEMES.LIGHT:
             return LIGHT;

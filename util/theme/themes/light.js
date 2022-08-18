@@ -18,5 +18,6 @@ export default {
     text: "#000",
 
     about_links_box_background: "#969696",
+    about_github_box_background: "#a2a2a2",
     about_brand_icons: "#7a7a7a",
 }
