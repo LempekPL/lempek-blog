@@ -64,4 +64,5 @@ const Dropdown = forwardRef((
     </>;
 })
 
+Dropdown.displayName = "Dropdown";
 export default Dropdown;
