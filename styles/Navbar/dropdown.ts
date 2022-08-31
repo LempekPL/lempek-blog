@@ -19,38 +19,10 @@ export const Drop = styled.nav`
   opacity: 96%;
 
   @media (max-width: 500px) {
+    overflow-y: scroll;
     width: 100%;
-    left: 0; 
+    bottom: 0; 
     border-width: 1px 0;
-  }
-`;
-
-export const DropLogin = styled.button`
-  border: none;
-  background-color: ${props => props.theme.dropdown_button};
-  filter: ${props => props.theme.type === "dark" ? "brightness(80%)" : "brightness(100%)"};
-  cursor: pointer;
-  height: 2.5rem;
-  padding: 0 0.5rem;
-  z-index: 2;
-  transition: 100ms;
-  outline-offset: -2px;
-
-  @media (max-width: 500px) {
-    height: 4rem;
-  }
-
-  :focus-visible {
-    outline: royalblue solid 2px;
-    font-weight: bold;
-  }
-
-  :is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
-  }
-  
-  @media (min-width: 401px) {
-    display: none;
   }
 `;
 
@@ -66,7 +38,7 @@ export const DropButton = styled.button`
   outline-offset: -2px;
 
   @media (max-width: 500px) {
-    height: 4rem;
+    min-height: 4rem;
   }
 
   :focus-visible {
@@ -76,6 +48,12 @@ export const DropButton = styled.button`
 
   :is(:hover, :focus-visible) {
     filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
+  }
+`;
+
+export const DropLogin = styled(DropButton)`
+  @media (min-width: 401px) {
+    display: none;
   }
 `;
 

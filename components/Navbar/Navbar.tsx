@@ -33,41 +33,41 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
     useOutside(outsideRef, () => closer());
 
     return <>
-        <NavBar>
-            <Link href="/" passHref>
-                <NavHome>
-                    <span className="bold">LEMPEK</span>
-                </NavHome>
-            </Link>
-            {/* @ts-ignore */}
-            <BunDev tabIndex={"0"} clicked={clicked}>
-                <Image src="/images/bunDev.svg" alt="BunDev" height={"100%"} width={"100%"}/>
-                <span>HI!</span>
-            </BunDev>
-            <RightSide>
-                <Link href={"/login"} passHref>
-                    <NavLogin lang={lang}>
-                        <UserIcon lang={lang}>
-                            {/* @ts-ignore */}
-                            <FontAwesomeIcon icon={["fas", "circle-user"]}/>
-                        </UserIcon>
-                        <span>{t("login")}</span>
-                    </NavLogin>
-                </Link>
-                <NavDrop ref={outsideRef} onClick={() => {
-                    toggleMenu();
-                    addClick();
-                    if (isOpen) innerDropdowns.current?.close();
-                }} // @ts-ignore
-                         isOpen={isOpen} closer={closer}>
-                    <NavDropIcon>
-                        <FontAwesomeIcon icon={["fas", "xmark"]}/>
-                        <FontAwesomeIcon icon={["fas", "bars"]}/>
-                    </NavDropIcon>
-                </NavDrop>
-            </RightSide>
-        </NavBar>
         <div ref={outsideRef}>
+            <NavBar>
+                <Link href="/" passHref>
+                    <NavHome>
+                        <span className="bold">LEMPEK</span>
+                    </NavHome>
+                </Link>
+                {/* @ts-ignore */}
+                <BunDev tabIndex={"0"} clicked={clicked}>
+                    <Image src="/images/bunDev.svg" alt="BunDev" height={"100%"} width={"100%"}/>
+                    <span>HI!</span>
+                </BunDev>
+                <RightSide>
+                    <Link href={"/login"} passHref>
+                        <NavLogin lang={lang}>
+                            <UserIcon lang={lang}>
+                                {/* @ts-ignore */}
+                                <FontAwesomeIcon icon={["fas", "circle-user"]}/>
+                            </UserIcon>
+                            <span>{t("login")}</span>
+                        </NavLogin>
+                    </Link>
+                    <NavDrop onClick={() => {
+                        toggleMenu();
+                        addClick();
+                        if (isOpen) innerDropdowns.current?.close();
+                    }} // @ts-ignore
+                             isOpen={isOpen} closer={closer}>
+                        <NavDropIcon>
+                            <FontAwesomeIcon icon={["fas", "xmark"]}/>
+                            <FontAwesomeIcon icon={["fas", "bars"]}/>
+                        </NavDropIcon>
+                    </NavDrop>
+                </RightSide>
+            </NavBar>
             {/* @ts-ignore */}
             <Dropdown isOpen={isOpen} ref={innerDropdowns} changeTheme={changeTheme} closer={closer}/>
         </div>
