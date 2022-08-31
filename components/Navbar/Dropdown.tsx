@@ -57,7 +57,6 @@ const Dropdown = forwardRef((
                 </DropButton>
             </Link>
             <DropSettings>
-                {/* @ts-ignore*/}
                 <OptionList changeTheme={changeTheme} ref={ref} isOpen={isOpen}/>
             </DropSettings>
         </Drop>
