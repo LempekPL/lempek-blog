@@ -21,7 +21,7 @@ export const Drop = styled.nav`
   @media (max-width: 500px) {
     overflow-y: scroll;
     width: 100%;
-    bottom: 0; 
+    max-height: calc(100vh - var(--navbar-height)); 
     border-width: 1px 0;
   }
 `;
