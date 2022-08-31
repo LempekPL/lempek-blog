@@ -3,7 +3,7 @@ import useTranslation from "next-translate/useTranslation";
 import useToggle from "../../hooks/useToggle";
 import THEMES from "../../util/theme/theme";
 import setLanguage from "next-translate/setLanguage";
-import {getCookie, setCookies} from "cookies-next";
+import {getCookie, setCookie} from "cookies-next";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
     OptionButtonStyle, OptionTextSelector,
@@ -33,7 +33,7 @@ const OptionList = forwardRef((
         (async () => {
             await setLanguage(localeName);
         })()
-        setCookies("NEXT_LOCALE", localeName, {
+        setCookie("NEXT_LOCALE", localeName, {
             secure: process.env.IN_DEV === "false",
             sameSite: "lax"
         });

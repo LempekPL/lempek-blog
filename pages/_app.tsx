@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import THEMES from "../util/theme/theme";
-import {getCookie, setCookies} from "cookies-next";
+import {getCookie, setCookie} from "cookies-next";
 import {config} from "@fortawesome/fontawesome-svg-core";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import {createGlobalStyle, ThemeProvider} from "styled-components";
@@ -25,7 +25,7 @@ const App = ({Component, pageProps}: AppProps) => {
     useEffect(() => setThemeName(getCookie("NEXT_THEME") as string), []);
     const changeTheme = (themeName: string) => {
         setThemeName(themeName);
-        setCookies("NEXT_THEME", themeName, {
+        setCookie("NEXT_THEME", themeName, {
             secure: process.env.IN_DEV === "false",
             sameSite: "lax"
         });

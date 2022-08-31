@@ -1,6 +1,6 @@
-import {Ref, useEffect} from "react";
+import {RefObject, useEffect} from "react";
 
-const useOutside = (ref: Ref<any>, fun: Function) => {
+const useOutside = (ref: RefObject<any>, fun: Function) => {
     useEffect(() => {
         /**
          * Alert if clicked on outside of element
