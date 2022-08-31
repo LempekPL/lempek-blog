@@ -12,6 +12,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import useToggle from "../../hooks/useToggle";
 import Dropdown from "./Dropdown";
 import type {ChangeTheme, RefOptions} from "../../types/navbar";
+import useOutside from "../../hooks/useOutside";
 
 const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
     const [clicked, setClick] = useState(0);
@@ -27,6 +28,9 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
         innerDropdowns.current?.close();
         resetClick();
     }
+
+    const outsideRef = useRef(null);
+    useOutside(outsideRef, () => closer());
 
     return <>
         <NavBar>
@@ -50,7 +54,7 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
                         <span>{t("login")}</span>
                     </NavLogin>
                 </Link>
-                <NavDrop onClick={() => {
+                <NavDrop ref={outsideRef} onClick={() => {
                     toggleMenu();
                     addClick();
                     if (isOpen) innerDropdowns.current?.close();
@@ -63,8 +67,10 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
                 </NavDrop>
             </RightSide>
         </NavBar>
-        {/* @ts-ignore */}
-        <Dropdown isOpen={isOpen} ref={innerDropdowns} changeTheme={changeTheme} closer={closer}/>
+        <div ref={outsideRef}>
+            {/* @ts-ignore */}
+            <Dropdown isOpen={isOpen} ref={innerDropdowns} changeTheme={changeTheme} closer={closer}/>
+        </div>
     </>;
 }
 
