@@ -1,6 +1,12 @@
 export type GithubUser = PrivateUser | PublicUser;
 export type GithubRepositories = GithubRespository[]
 
+export interface AboutData {
+    user: GithubUser
+    repos: GithubRepositories
+    contributors: Contributors
+}
+
 /**
  * Private User
  */
@@ -53,6 +59,7 @@ export interface PrivateUser {
     suspended_at?: string | null
     business_plus?: boolean
     ldap_dn?: string
+
     [k: string]: unknown
 }
 
@@ -210,8 +217,10 @@ export interface GithubRespository {
     open_issues?: number
     watchers?: number
     allow_forking?: boolean
+
     [k: string]: unknown
 }
+
 /**
  * Simple User
  */
@@ -237,6 +246,7 @@ export interface SimpleUser {
     type: string
     site_admin: boolean
     starred_at?: string
+
     [k: string]: unknown
 }
 
@@ -515,6 +525,7 @@ export interface Repository {
     watchers: number
     master_branch?: string
     starred_at?: string
+
     [k: string]: unknown
 }
 
@@ -528,6 +539,7 @@ export interface LicenseSimple {
     spdx_id: string | null
     node_id: string
     html_url?: string
+
     [k: string]: unknown
 }
 
@@ -556,6 +568,7 @@ export interface SimpleUser1 {
     type: string
     site_admin: boolean
     starred_at?: string
+
     [k: string]: unknown
 }
 
@@ -584,6 +597,7 @@ export interface SimpleUser2 {
     type: string
     site_admin: boolean
     starred_at?: string
+
     [k: string]: unknown
 }
 
@@ -596,5 +610,31 @@ export interface CodeOfConduct {
     url: string
     body?: string
     html_url: string | null
+
     [k: string]: unknown
+}
+
+/**
+ * Contributors data
+ */
+export type Contributors = Contributor[]
+
+export interface Contributor {
+    name: string
+    image?: string
+    info?: string
+    socials?: Socials
+}
+
+export interface Socials {
+    youtube?: string,
+    twitch?: string,
+    twitter?: string,
+    github?: string,
+    website?: string,
+    reddit?: string,
+    linkedin?: string,
+    facebook?: string,
+    snapchat?: string,
+    instagram?: string,
 }

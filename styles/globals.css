@@ -9,6 +9,12 @@ body {
     background-color: #000;
 }
 
+html,
+body,
+div#__next {
+    height: 100%;
+}
+
 @media (max-width: 500px) {
     html, body {
         --navbar-height: 4rem;
