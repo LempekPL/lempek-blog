@@ -44,6 +44,9 @@ export const LinksButton = styled.button`
   background-color: ${props => props.theme.background};
   padding: 1rem 2rem;
   width: 12rem;
+  cursor: pointer;
+  font-weight: ${props => // @ts-ignore
+          props.currentLink === props.displayAt ? "bold" : "normal"};
   filter: ${props => props.theme.type === "dark" ? "brightness(90%)" : "brightness(100%)"};
 
   :focus-visible {
@@ -51,7 +54,11 @@ export const LinksButton = styled.button`
   }
   
   :is(:focus-visible, :hover) {
-    filter: ${props => props.theme.type === "dark" ? "brightness(100%)" : "brightness(80%)"};
+    filter: ${props => props.theme.type === "dark" ? "brightness(100%)" : "brightness(90%)"};
+  }
+
+  :active {
+    filter: ${props => props.theme.type === "dark" ? "brightness(110%)" : "brightness(80%)"};
   }
 
   @media (max-width: 640px) {

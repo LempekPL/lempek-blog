@@ -7,6 +7,7 @@ export const ContributorsBox = styled.div`
   flex-wrap: wrap;
   gap: 1rem;
   justify-content: space-around;
+  margin-bottom: 2rem;
 `;
 
 export const ContributorProfile = styled.div`

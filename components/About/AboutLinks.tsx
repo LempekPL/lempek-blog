@@ -6,6 +6,7 @@ import {
 import {useState} from "react";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import type {IconName} from "@fortawesome/fontawesome-common-types";
+import Github from "./Links/Github";
 // import Image from "next/image";
 
 const socials: IconName[] = [
@@ -23,7 +24,9 @@ const Accounts = ({data}: { data: AboutData }) => {
         list.push(
             <LinksButton key={socials[i]} onClick={() => {
                 setLink(i)
-            }}> <ButtonIcon><FontAwesomeIcon icon={["fab", socials[i]]}/></ButtonIcon>
+            }} // @ts-ignore
+                         currentLink={getLink} displayAt={i}> <ButtonIcon>
+                <FontAwesomeIcon icon={["fab", socials[i]]}/></ButtonIcon>
                 {socials[i][0].toUpperCase() + socials[i].slice(1)}</LinksButton>
         );
     }
@@ -36,11 +39,15 @@ const Accounts = ({data}: { data: AboutData }) => {
             <LinksBox>
                 {/* @ts-ignore */}
                 <LinkProfile currentLink={getLink} displayAt={0}>
-                    aaaaaaa
+                    <Github data={data}/>
                 </LinkProfile>
                 {/* @ts-ignore */}
                 <LinkProfile currentLink={getLink} displayAt={1}>
-                    bbbbbbbb
+                    TODO: linkedin
+                </LinkProfile>
+                {/* @ts-ignore */}
+                <LinkProfile currentLink={getLink} displayAt={2}>
+                    TODO: twitter
                 </LinkProfile>
             </LinksBox>
         </LinksMargins>
