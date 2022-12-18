@@ -1,12 +1,16 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 html,
 body {
     --navbar-height: 3rem;
 
-    padding: 0;
-    margin: 0;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    transition: 300ms;
     background-color: #000;
+    transition: 300ms;
 }
 
 html,
