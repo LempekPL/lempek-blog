@@ -163,8 +163,8 @@ export const LinksLink = styled.a`
   border-radius: 100rem;
   border: 2px solid ${props => // @ts-ignore
           props.companyColor};
-  color: #eee;
-  background-color: #eee;
+  color: #fff;
+  background-color: ${props => props.theme.about_brand_buttons};
 
   :focus-visible {
     outline: royalblue solid 2px;
@@ -177,7 +177,7 @@ export const LinksLink = styled.a`
   :is(:focus-visible, :hover) span {
     transition: .25s;
     color: ${props => // @ts-ignore
-            props.companyColor};
+            props.theme.type == "dark" ? "#ccc" : props.companyColor};
   }
 
   ::after {

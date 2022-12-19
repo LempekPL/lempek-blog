@@ -45,7 +45,7 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
                 </Link>
                 {/* @ts-ignore */}
                 <BunDev tabIndex={"0"} clicked={clicked}>
-                    <Image src={bunDevIcon} alt="BunDev" priority/>
+                    <Image src={bunDevIcon} alt="BunDev" priority={false}/>
                     <span>HI!</span>
                 </BunDev>
                 <RightSide>

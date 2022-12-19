@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
     type: "dark",
     icon: "/otherFavicons/lempekdesigndark.ico",
@@ -15,7 +16,5 @@ export default {
     background: "#606060",
     text: "#b4b4b4",
 
-    about_links_box_background: "#6c6c6c",
-    about_github_box_background: "#606060",
-    about_brand_icons: "#a6a6a6",
+    about_brand_buttons: "#888"
 }
