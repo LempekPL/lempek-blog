@@ -1,4 +1,6 @@
 {
+  "error": "Błąd",
+  "notFound": "Nie znaleziono",
   "months": {
     "january": "Styczeń",
     "february": "Luty",

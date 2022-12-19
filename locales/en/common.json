@@ -1,4 +1,6 @@
 {
+  "error": "Error",
+  "notFound": "Not Found",
   "months": {
     "january": "January",
     "february": "February",
