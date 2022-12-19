@@ -13,6 +13,8 @@ import useToggle from "../../hooks/useToggle";
 import Dropdown from "./Dropdown";
 import type {ChangeTheme, RefOptions} from "../../types/navbar";
 import useOutside from "../../hooks/useOutside";
+import useIcon from "../../hooks/useIcon";
+import bunDevIcon from "../../public/images/bunDev.svg"
 
 const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
     const [clicked, setClick] = useState(0);
@@ -32,25 +34,26 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
     const outsideRef = useRef(null);
     useOutside(outsideRef, () => closer());
 
+
     return <>
         <div ref={outsideRef}>
             <NavBar>
-                <Link href="/" passHref>
+                <Link href="/" passHref tabIndex={-1}>
                     <NavHome>
                         <span className="bold">LEMPEK</span>
                     </NavHome>
                 </Link>
                 {/* @ts-ignore */}
                 <BunDev tabIndex={"0"} clicked={clicked}>
-                    <Image src="/images/bunDev.svg" alt="BunDev" height={"100%"} width={"100%"}/>
+                    <Image src={bunDevIcon} alt="BunDev"/>
                     <span>HI!</span>
                 </BunDev>
                 <RightSide>
-                    <Link href={"/login"} passHref>
+                    <Link href={"/login"} passHref tabIndex={-1}>
                         <NavLogin lang={lang}>
                             <UserIcon lang={lang}>
                                 {/* @ts-ignore */}
-                                <FontAwesomeIcon icon={["fas", "circle-user"]}/>
+                                {useIcon(<FontAwesomeIcon icon={["fas", "circle-user"]}/>)}
                             </UserIcon>
                             <span>{t("login")}</span>
                         </NavLogin>
@@ -62,8 +65,8 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
                     }} // @ts-ignore
                              isOpen={isOpen} closer={closer}>
                         <NavDropIcon>
-                            <FontAwesomeIcon icon={["fas", "xmark"]}/>
-                            <FontAwesomeIcon icon={["fas", "bars"]}/>
+                            {useIcon(<FontAwesomeIcon icon={["fas", "xmark"]}/>)}
+                            {useIcon(<FontAwesomeIcon icon={["fas", "bars"]}/>)}
                         </NavDropIcon>
                     </NavDrop>
                 </RightSide>

@@ -16,7 +16,7 @@ const Dropdown = forwardRef((
     return <>
         {/* @ts-ignore*/}
         <Drop isOpen={isOpen}>
-            <Link href="/" passHref>
+            <Link href="/" passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
                     <DropText>
@@ -24,7 +24,7 @@ const Dropdown = forwardRef((
                     </DropText>
                 </DropButton>
             </Link>
-            <Link href={"/login"} passHref>
+            <Link href={"/login"} passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropLogin onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
                     <DropText>
@@ -32,7 +32,7 @@ const Dropdown = forwardRef((
                     </DropText>
                 </DropLogin>
             </Link>
-            <Link href={"/about"} passHref>
+            <Link href={"/about"} passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
                     <DropText>
@@ -40,7 +40,7 @@ const Dropdown = forwardRef((
                     </DropText>
                 </DropButton>
             </Link>
-            <Link href={"/changelog"} passHref>
+            <Link href={"/changelog"} passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
                     <DropText>
@@ -48,7 +48,7 @@ const Dropdown = forwardRef((
                     </DropText>
                 </DropButton>
             </Link>
-            <Link href={"/experiments"} passHref>
+            <Link href={"/experiments"} passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
                     <DropText>

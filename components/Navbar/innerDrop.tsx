@@ -12,6 +12,7 @@ import {
     SettingIcon, SettingName
 } from "../../styles/Navbar/innerDrop";
 import type {ChangeTheme, RefOptions} from "../../types/navbar";
+import useIcon from "../../hooks/useIcon";
 
 const OptionList = forwardRef((
     {isOpen, changeTheme}: { isOpen: boolean, changeTheme: ChangeTheme }
@@ -105,7 +106,7 @@ const OptionButton = (
                 {translation}
                 {/* @ts-ignore */}
                 <OptionFAIcon isSelfOpen={isSelfOpen}>
-                    <FontAwesomeIcon icon={["fas", "angle-down"]}/>
+                    {useIcon(<FontAwesomeIcon icon={["fas", "angle-down"]}/>)}
                 </OptionFAIcon>
             </OptionTextSelector>
         </OptionButtonStyle>
@@ -116,16 +117,16 @@ const SettingButton = (
     {setValue, isOpen, translation, change}:
         { setValue: string, isOpen: boolean, translation: string, change: [(_: string) => void, string] }
 ) => {
+    const checkMark = useIcon(<FontAwesomeIcon icon={["fas", "circle-check"]}/>);
+    const xMark = useIcon(<FontAwesomeIcon icon={["far", "circle-xmark"]}/>);
+
     return <>
         {/* @ts-ignore */}
         <SettingsItemButton isOpen={isOpen} tabIndex={isOpen ? "0" : "-1"} onClick={() => {
             change[0](change[1]);
         }}>
             <SettingIcon>
-                {setValue === change[1] ?
-                    <FontAwesomeIcon icon={["fas", "circle-check"]}/> :
-                    <FontAwesomeIcon icon={["far", "circle-xmark"]}/>
-                }
+                {setValue === change[1] ? checkMark : xMark}
             </SettingIcon>
             <SettingName>
                 {translation}

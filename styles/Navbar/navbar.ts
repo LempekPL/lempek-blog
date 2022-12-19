@@ -19,6 +19,7 @@ export const NavHome = styled.button`
   color: #000;
   cursor: pointer;
   padding: 0 1rem;
+  height: 100%;
 
   &:is(:hover, :focus-visible) {
     filter: brightness(80%);
@@ -53,6 +54,7 @@ export const BunDev = styled.div`
 
   img {
     height: calc(var(--navbar-height) + 0.5rem) !important;
+    width: calc(var(--navbar-height) + 0.5rem) !important;
     transform: rotate(25deg);
   }
 
@@ -62,7 +64,7 @@ export const BunDev = styled.div`
     color: ${props => props.theme.navbar_text_button}
   }
 
-  &:focus-visible {
+  :focus-visible {
     transform: translateX(100%);
   }
 `;

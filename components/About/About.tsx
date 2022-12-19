@@ -18,6 +18,7 @@ import {
 import useTranslation from "next-translate/useTranslation";
 import type {Socials} from "../../types/about";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import useIcon from "../../hooks/useIcon";
 
 const socials: Socials[] = [
     {
@@ -68,7 +69,8 @@ const About = () => {
                 // @ts-ignore
                        companyColor={socials[i].color}
                        href={socials[i].link} target="_blank">
-                <ButtonIcon><FontAwesomeIcon icon={["fab", socials[i].name]}/></ButtonIcon>
+                 {/*eslint-disable-next-line react-hooks/rules-of-hooks */}
+                <ButtonIcon>{useIcon(<FontAwesomeIcon icon={["fab", socials[i].name]}/>)}</ButtonIcon>
                 <LinkText>{socials[i].name[0].toUpperCase() + socials[i].name.slice(1)}</LinkText>
             </LinksLink>
         );
@@ -79,7 +81,7 @@ const About = () => {
             <AboutBox>
                 <LempekAbout>
                     <LempekImage>
-                        <Image src={"/images/lempekIRL.png"} alt="Lempek" layout="fill" priority={true}/>
+                        <Image src={"/images/lempekIRL.png"} alt="Lempek" fill priority={true}/>
                     </LempekImage>
                     <LempekNames>
                         <Name>Piotr Lempkowski</Name>

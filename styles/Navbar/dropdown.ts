@@ -36,6 +36,7 @@ export const DropButton = styled.button`
   z-index: 2;
   transition: 100ms;
   outline-offset: -2px;
+  width: 100%;
 
   @media (max-width: 500px) {
     min-height: 4rem;
