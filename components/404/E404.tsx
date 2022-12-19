@@ -1,17 +1,18 @@
-import {E404Box, E404Margins, E404TextBox} from "../../styles/E404/e404";
+import {E404TextBox} from "../../styles/E404/e404";
 import useTranslation from "next-translate/useTranslation";
+import {MainBox, MainLayout} from "../../styles/universal";
 
 const E404 = () => {
     const {t} = useTranslation("common");
 
     return <>
-        <E404Margins>
-            <E404Box>
+        <MainLayout>
+            <MainBox>
                 <E404TextBox>
                     <p>{t("error")} 404<br/>{t("notFound")}</p>
                 </E404TextBox>
-            </E404Box>
-        </E404Margins>
+            </MainBox>
+        </MainLayout>
     </>
 }
 

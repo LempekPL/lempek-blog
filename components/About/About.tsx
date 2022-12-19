@@ -1,7 +1,5 @@
 import Image from "next/image";
 import {
-    AboutMargins,
-    AboutBox,
     LempekAbout,
     LempekImage,
     LempekNames,
@@ -19,6 +17,7 @@ import useTranslation from "next-translate/useTranslation";
 import type {Socials} from "../../types/about";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import useIcon from "../../hooks/useIcon";
+import {MainBox, MainLayout} from "../../styles/universal";
 
 const socials: Socials[] = [
     {
@@ -77,8 +76,8 @@ const About = () => {
     }
 
     return <>
-        <AboutMargins>
-            <AboutBox>
+        <MainLayout>
+            <MainBox>
                 <LempekAbout>
                     <LempekImage>
                         <Image src={"/images/lempekIRL.png"} alt="Lempek" width={14*16} height={14*16} priority={true}/>
@@ -98,8 +97,8 @@ const About = () => {
                         {button_link_list}
                     </LinksList>
                 </LempekInformation>
-            </AboutBox>
-        </AboutMargins>
+            </MainBox>
+        </MainLayout>
     </>;
 }
 
