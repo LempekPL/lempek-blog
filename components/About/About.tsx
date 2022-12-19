@@ -81,7 +81,7 @@ const About = () => {
             <AboutBox>
                 <LempekAbout>
                     <LempekImage>
-                        <Image src={"/images/lempekIRL.png"} alt="Lempek" fill priority={true}/>
+                        <Image src={"/images/lempekIRL.png"} alt="Lempek" width={14*16} height={14*16} priority={true}/>
                     </LempekImage>
                     <LempekNames>
                         <Name>Piotr Lempkowski</Name>

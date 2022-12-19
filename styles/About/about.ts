@@ -44,8 +44,6 @@ export const LempekAbout = styled.div`
 `;
 
 export const LempekImage = styled.div`
-  height: 14rem;
-  width: 14rem;
   position: relative;
 
   img {
