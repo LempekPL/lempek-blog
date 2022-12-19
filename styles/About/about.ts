@@ -21,7 +21,7 @@ export const AboutBox = styled.div`
   height: 100%;
   grid-column: 2;
   align-items: center;
-  background-color: #505050; // TODO: theme system
+  background-color: ${props => props.theme.background_box};
   z-index: 1;
 `;
 
@@ -44,12 +44,9 @@ export const LempekAbout = styled.div`
 `;
 
 export const LempekImage = styled.div`
-  position: relative;
-
   img {
     border-radius: 100%;
     object-fit: contain;
-    z-index: 2;
   }
 `;
 
@@ -60,7 +57,6 @@ export const LempekNames = styled.div`
 
 export const Name = styled.div`
   background-color: ${props => props.theme.background};
-  position: relative;
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
@@ -68,43 +64,10 @@ export const Name = styled.div`
   border-radius: 2rem 2rem 2rem 0;
   width: fit-content;
 
-  ::before {
-    content: "";
-    position: absolute;
-    z-index: -1;
-
-    background-color: #505050;
-    left: 14.45rem;
-    bottom: -4rem;
-    height: 4rem;
-    width: 2rem;
-    border-top-left-radius: 2rem;
-    box-shadow: 0 -2rem 0 0 ${props => props.theme.background};
-
-    @media (max-width: 999px) {
-      left: 12.35rem;
-    }
-
-    @media (max-width: 700px) {
-      left: 12.3rem;
-    }
-  }
-
   @media (max-width: 999px) {
     font-size: 2rem;
     line-height: 2.5rem;
   }
-
-  //@media (max-width: 600px) {
-  //  align-self: center;
-  //}
-  //
-  //@media (max-width: 350px) {
-  //  font-size: 12vw;
-  //  line-height: 16vw;
-  //  border-radius: 0;
-  //  padding: 0;
-  //}
 `;
 
 export const Nick = styled.div`
@@ -115,10 +78,25 @@ export const Nick = styled.div`
   padding: .5rem 2rem;
   border-radius: 0 0 2rem 2rem;
   width: fit-content;
+  position: relative;
 
   @media (max-width: 999px) {
     font-size: 2rem;
     line-height: 2.5rem;
+  }
+
+  ::after {
+    content: "";
+    position: absolute;
+
+    background-color: ${props => props.theme.background_box};
+    right: -2rem;
+    top: 0;
+    height: 4rem;
+    width: 2rem;
+    border-top-left-radius: 2rem;
+    box-shadow: 0 -2rem 0 0 ${props => props.theme.background};
+    z-index: -1;
   }
 
 `;

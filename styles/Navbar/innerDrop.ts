@@ -4,7 +4,7 @@ export const OptionButtonStyle = styled.button`
   border: none;
   background-color: ${props => props.theme.dropdown_button};
   cursor: pointer;
-  filter: ${props => props.theme.type === "dark" ? "brightness(80%)" : "brightness(100%)"};
+  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
   height: 2.5rem;
   position: relative;
   padding: 0;
@@ -23,7 +23,7 @@ export const OptionButtonStyle = styled.button`
   }
 
   :is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "dark" ? "brightness(100%)" : "brightness(80%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 `;
 
@@ -94,7 +94,7 @@ export const SettingsItemButton = styled.button`
   cursor: pointer;
   display: flex;
   color: ${props => props.theme.dropdown_text_button};
-  filter: ${props => props.theme.type === "dark" ? "brightness(70%)" : "brightness(90%)"};
+  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(70%)" : "brightness(90%)"};
   font-size: 1.5rem;
   flex-direction: row;
   height: ${props => // @ts-ignore
@@ -117,7 +117,7 @@ export const SettingsItemButton = styled.button`
   }
 
   :is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "dark" ? "brightness(90%)" : "brightness(70%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(90%)" : "brightness(70%)"};
   }
 `;
 

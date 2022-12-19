@@ -12,8 +12,8 @@ export default {
     dropdown_settings_border: "#b7b7b7",
     dropdown_drop_settings_background: "#3D3D3D",
 
-    background_box: "#494949",
-    background: "#606060",
+    background_box: "#505050",
+    background: "#595959",
     text: "#b4b4b4",
 
     about_brand_buttons: "#888"

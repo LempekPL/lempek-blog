@@ -79,10 +79,6 @@ export const UserIcon = styled.div`
   display: inline-block;
   padding: 0 0.25rem 0 0;
 
-  // @media (max-width: 500px) {
-  //   display: ${props => "pl" === props?.lang ? "none" : "block"}
-  // }
-
   svg {
     display: block;
     height: 100%;
@@ -100,14 +96,14 @@ export const NavLogin = styled.button`
   font-size: 1.5rem;
   text-decoration: none;
   cursor: pointer;
-  filter: ${props => props.theme.type === "light" ? "brightness(100%)" : "brightness(80%)"};
+  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
 
   &:focus-visible {
     outline: royalblue solid 2px;
   }
 
   &:is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 
   @media (max-width: 400px) {
@@ -127,7 +123,7 @@ export const NavDrop = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
-  filter: ${props => props.theme.type === "dark" ? "brightness(80%)" : "brightness(100%)"};
+  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
   overflow: hidden;
 
   &:focus-visible {
@@ -157,11 +153,11 @@ export const NavDrop = styled.button`
   }
 
   &:is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "dark" ? "brightness(100%)" : "brightness(80%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 
   :active {
-    filter: ${props => props.theme.type === "dark" ? "brightness(110%)" : "brightness(70%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(110%)" : "brightness(70%)"};
   }
 `;
 

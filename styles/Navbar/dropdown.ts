@@ -29,7 +29,7 @@ export const Drop = styled.nav`
 export const DropButton = styled.button`
   border: none;
   background-color: ${props => props.theme.dropdown_button};
-  filter: ${props => props.theme.type === "dark" ? "brightness(80%)" : "brightness(100%)"};
+  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
   cursor: pointer;
   height: 2.5rem;
   padding: 0 0.5rem;
@@ -48,7 +48,7 @@ export const DropButton = styled.button`
   }
 
   :is(:hover, :focus-visible) {
-    filter: ${props => props.theme.type === "light" ? "brightness(80%)" : "brightness(100%)"};
+    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 `;
 
