@@ -6,7 +6,6 @@ export default {
     type: "dark+",
     icon: "/otherFavicons/lempekdesigngreen.ico",
 
-
     navbar_background: "#1c540a",
     navbar_button: "#1e8600",
     navbar_text_button: "#e7e7e7",
@@ -14,7 +13,7 @@ export default {
     dropdown_text_button: "#ddd",
     dropdown_button: "#278600",
     dropdown_settings_border: "#46961a",
-    dropdown_drop_settings_background: "#1d4800",
+    dropdown_drop_settings_background: "#379300",
 
     background_box: "#2d6c10",
     background: "#225b0e",

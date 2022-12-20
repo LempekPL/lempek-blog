@@ -10,7 +10,7 @@ export default {
     dropdown_text_button: "#d7d7d7",
     dropdown_button: "#626262",
     dropdown_settings_border: "#b7b7b7",
-    dropdown_drop_settings_background: "#3D3D3D",
+    dropdown_drop_settings_background: "#757575",
 
     background_box: "#505050",
     background: "#595959",

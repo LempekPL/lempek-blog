@@ -35,7 +35,7 @@ export const OptionTextSelector = styled.span`
   text-align: center;
 
   div {
-    background-color: #727272;
+    background-color: ${props => props.theme.dropdown_drop_settings_background};
     display: inline-block;
     float: right;
     height: 2.5rem;
@@ -47,7 +47,7 @@ export const OptionTextSelector = styled.span`
     line-height: 4rem;
 
     div {
-      background-color: #727272;
+      background-color: ${props => props.theme.dropdown_drop_settings_background};
       display: inline-block;
       float: right;
       height: 4rem;
