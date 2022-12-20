@@ -49,15 +49,15 @@ const Navbar = ({changeTheme}: { changeTheme: ChangeTheme }) => {
                     <span>HI!</span>
                 </BunDev>
                 <RightSide>
-                    <Link href={"/login"} passHref tabIndex={-1}>
-                        <NavLogin lang={lang}>
-                            <UserIcon lang={lang}>
-                                {/* @ts-ignore */}
-                                {useIcon(<FontAwesomeIcon icon={["fas", "circle-user"]}/>)}
-                            </UserIcon>
-                            <span>{t("login")}</span>
-                        </NavLogin>
-                    </Link>
+                    {/*<Link href={"/login"} passHref tabIndex={-1}>*/}
+                    {/*    <NavLogin lang={lang}>*/}
+                    {/*        <UserIcon lang={lang}>*/}
+                    {/*            /!* @ts-ignore *!/*/}
+                    {/*            {useIcon(<FontAwesomeIcon icon={["fas", "circle-user"]}/>)}*/}
+                    {/*        </UserIcon>*/}
+                    {/*        <span>{t("login")}</span>*/}
+                    {/*    </NavLogin>*/}
+                    {/*</Link>*/}
                     <NavDrop onClick={() => {
                         toggleMenu();
                         addClick();

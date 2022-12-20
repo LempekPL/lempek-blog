@@ -24,14 +24,14 @@ const Dropdown = forwardRef((
                     </DropText>
                 </DropButton>
             </Link>
-            <Link href={"/login"} passHref tabIndex={-1}>
-                {/* @ts-ignore*/}
-                <DropLogin onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
-                    <DropText>
-                        {t("login")}
-                    </DropText>
-                </DropLogin>
-            </Link>
+            {/*<Link href={"/login"} passHref tabIndex={-1}>*/}
+            {/*    /!* @ts-ignore*!/*/}
+            {/*    <DropLogin onClick={closer} tabIndex={isOpen ? "0" : "-1"}>*/}
+            {/*        <DropText>*/}
+            {/*            {t("login")}*/}
+            {/*        </DropText>*/}
+            {/*    </DropLogin>*/}
+            {/*</Link>*/}
             <Link href={"/about"} passHref tabIndex={-1}>
                 {/* @ts-ignore*/}
                 <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
