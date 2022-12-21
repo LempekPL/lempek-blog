@@ -19,9 +19,25 @@ export const LempekAbout = styled.div`
 `;
 
 export const LempekImage = styled.div`
+  position: relative;
   img {
     border-radius: 100%;
     object-fit: contain;
+    z-index: 1;
+  }
+
+  :before {
+    border-radius: 50%;
+    z-index: -1;
+    content: "";
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    position: absolute;
+    background-size: 100% 100%;
+    background-image: url("/images/lempekIRL.png");
+    filter: blur(.25rem);
   }
 `;
 
@@ -119,6 +135,8 @@ export const LinksLink = styled.a`
           props.companyColor};
   color: #fff;
   background-color: ${props => props.theme.about_brand_buttons};
+  box-shadow: 0 0 .5rem ${props => // @ts-ignore
+          props.companyColor};
 
   :focus-visible {
     outline: royalblue solid 2px;
