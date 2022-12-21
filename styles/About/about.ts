@@ -73,7 +73,6 @@ export const Nick = styled.div`
     box-shadow: 0 -2rem 0 0 ${props => props.theme.background};
     z-index: -1;
   }
-
 `;
 
 export const LempekInformation = styled.div`
@@ -91,6 +90,7 @@ export const LempekDesc = styled.p`
   padding: 1rem;
   border-radius: 1rem;
   background-color: ${props => props.theme.background};
+  box-shadow: 0 .25rem .5rem rgba(0,0,0,50%);
 `;
 
 export const LinksList = styled.div`
@@ -102,6 +102,7 @@ export const LinksList = styled.div`
   padding: 1rem;
   border-radius: 1rem;
   background-color: ${props => props.theme.background};
+  box-shadow: 0 .25rem .5rem rgba(0,0,0,50%);
 `;
 
 export const LinksLink = styled.a`

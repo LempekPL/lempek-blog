@@ -19,6 +19,22 @@ export const ChangeBox = styled.div`
 `;
 
 export const ChangeName = styled.p`
+  background-color: ${props => props.theme.background};
+  margin-left: 12rem;
+  margin-right: 12rem;
+  padding: .25rem;
+  border-radius: 100rem;
+  box-shadow: 0 .25rem .25rem rgba(0,0,0,50%);
+  
+  @media (max-width: 1000px) {
+    margin-left: 4rem;
+    margin-right: 4rem;
+  }
+
+  @media (max-width: 700px) {
+    margin-left: 0;
+    margin-right: 0;
+  }
 `;
 
 export const ChangesList = styled.div`

@@ -16,8 +16,10 @@ export default {
     dropdown_drop_settings_background: "#2a2a2a",
 
     background_box: "#000000",
-    background: "#101010",
+    background: "#050505",
     text: "#b4b4b4",
 
-    about_brand_buttons: "#111"
+    about_brand_buttons: "#111",
+
+    search_bar: "#262626"
 }

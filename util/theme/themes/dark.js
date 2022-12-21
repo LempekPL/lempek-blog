@@ -16,5 +16,7 @@ export default {
     background: "#595959",
     text: "#b4b4b4",
 
-    about_brand_buttons: "#888"
+    about_brand_buttons: "#888",
+
+    search_bar: "#646464"
 }
