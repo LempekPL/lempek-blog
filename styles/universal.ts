@@ -14,7 +14,7 @@ export const MainLayout = styled.div`
   }
 `;
 
-export const MainBox = styled.div`
+export const MainBox = styled.main`
   height: 100%;
   grid-column: 2;
   align-items: center;

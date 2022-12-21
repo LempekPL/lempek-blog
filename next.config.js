@@ -9,6 +9,15 @@ const nextConfig = nextTranslate({
     compiler: {
         styledComponents: true,
     },
+    async redirects() {
+        return [
+            {
+                source: "/posts",
+                destination: "/",
+                permanent: true
+            },
+        ]
+    }
 });
 
 module.exports = nextConfig;
