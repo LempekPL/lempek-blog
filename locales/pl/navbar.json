@@ -1,0 +1,17 @@
+{
+  "login": "Zaloguj się",
+  "home" : "Strona Główna",
+  "about": "O Lempku",
+  "changelog": "Dziennik zmian",
+  "experiments": "Eksperymenty",
+  "theme": "Motyw",
+  "light": "Jasny",
+  "dark": "Ciemny",
+  "amoled": "AMOLED",
+  "lempek": "Lempek",
+  "lunar": "Lunar",
+  "language": "Język",
+  "pl": "Polski",
+  "en": "English",
+  "de": "Deutsch"
+}

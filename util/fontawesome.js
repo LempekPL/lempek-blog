@@ -1,5 +1,5 @@
 // import the library
-import { library, config } from '@fortawesome/fontawesome-svg-core';
+import { library } from '@fortawesome/fontawesome-svg-core';
 
 // import icons
 import { fas } from '@fortawesome/free-solid-svg-icons';

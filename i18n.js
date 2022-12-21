@@ -6,7 +6,6 @@ module.exports = {
         "/changelog": ["changelog"],
         "/about": ["about"]
     },
-    "loadLocaleFrom": (lang, ns) => import(`./public/locales/${lang}/${ns}.json`).then((m) => m.default),
     "domains": [
         {
             "domain": "lempek.dev",

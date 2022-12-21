@@ -1,0 +1,17 @@
+{
+  "login": "Login",
+  "home" : "Home",
+  "about": "About Lempek",
+  "changelog": "Changelog",
+  "experiments": "Experiments",
+  "theme": "Theme",
+  "light": "Light",
+  "dark": "Dark",
+  "amoled": "AMOLED",
+  "lempek": "Lempek",
+  "lunar": "Lunar",
+  "language": "Language",
+  "pl": "Polski",
+  "en": "English",
+  "de": "Deutsch"
+}

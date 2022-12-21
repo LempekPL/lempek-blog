@@ -1,0 +1,276 @@
+{
+  "changes": [
+    {
+      "_version_": "3.0",
+      "_date_": "22 {{dec}} 2022",
+      "list": [
+        "Created experiments subpage",
+        "Changed backend",
+        "Changed website layout",
+        "Changed navbar",
+        "Added animations to navbar and dropdown menu",
+        "Added Lunar theme",
+        "Added Home button in dropdown menu",
+        "Added Experiments button in dropdown menu",
+        "Updated About Lempek subpage",
+        "Updated Changelog subpage",
+        "Removed BunBun button in dropdown menu",
+        "Removed API button in dropdown menu"
+      ]
+    },
+    {
+      "_version_": "2.0.2",
+      "_date_": "30 {{may}} 2021",
+      "list": [
+        "Color fixing",
+        "Frontend cleaning",
+        "First test post"
+      ]
+    },
+    {
+      "_version_": "2.0.1",
+      "_date_": "22 {{may}} 2021",
+      "list": [
+        "Domain name changed to .dev",
+        "Backend cleaning",
+        "Slight change in appearance",
+        "Deleted settings page"
+      ]
+    },
+    {
+      "_version_": "2.0",
+      "_date_": "17 {{feb}} 2021",
+      "list": [
+        "New version numbering system",
+        "Abandoned accounts project"
+      ]
+    },
+    {
+      "_version_": "1.6.2",
+      "_date_": "25 {{dec}} 2020",
+      "list": [
+        "Changing the password by sending a link to an email",
+        "Improved Lempek's theme",
+        "New change log system"
+      ]
+    },
+    {
+      "_version_": "1.6.1",
+      "_date_": "24 {{dec}} 2020",
+      "list": [
+        "Fixed mail verification",
+        "Fixed account bugs"
+      ]
+    },
+    {
+      "_version_": "1.6",
+      "_date_": "23 {{dec}} 2020",
+      "list": [
+        "Better navbar",
+        "Added API to navbar",
+        "Moved BunBun to navbar from settings",
+        "Moved API to api.lempek.tk",
+        "Moved BunBun website to bunbun.lempek.tk"
+      ]
+    },
+    {
+      "_version_": "1.5",
+      "_date_": "17 {{aug}} 2020",
+      "list": [
+        "New better UI",
+        "New navbar",
+        "Full compatibility with phones"
+      ]
+    },
+    {
+      "_version_": "1.4",
+      "_date_": "16 {{aug}} 2020",
+      "list": [
+        "Deleted seasonal themes",
+        "Added Dark (AMOLED) theme",
+        "Now Light theme is default",
+        "Deleted GameHub",
+        "Deleted countdown to new year"
+      ]
+    },
+    {
+      "_version_": "1.3",
+      "_date_": "25 {{apr}} 2020",
+      "list": [
+        "Added BunBun page in Settings",
+        "Recaptcha verification",
+        "Email verification"
+      ]
+    },
+    {
+      "_version_": "1.2",
+      "_date_": "30 {{mar}} 2020",
+      "list": [
+        "More compatibility with phones",
+        "New Navbar",
+        "Rewrited theme system",
+        "Rewrited language system",
+        "Website optimization",
+        "Added Juby's theme",
+        "Deleted VantaDark theme",
+        "Moved About Me to Settings",
+        "Added Search to navbar",
+        "Fixed bug when new year comes time to next year is -1"
+      ]
+    },
+    {
+      "_version_": "1.1.5",
+      "_date_": "26 {{mar}} 2020",
+      "list": [
+        "Fixed small bugs",
+        "Accounts (Only register, login and log out)",
+        "Full connection with database (backend)"
+      ]
+    },
+    {
+      "_version_": "1.1.4",
+      "_date_": "13 {{feb}} 2020",
+      "list": [
+        "Fixed small bugs",
+        "GameHub",
+        "Updated TicTacToe v1.2",
+        "Added Valentine's theme"
+      ]
+    },
+    {
+      "_version_": "1.1.3",
+      "_date_": "6 {{feb}} 2020",
+      "list": [
+        "Fixed small bugs",
+        "Theme seasons",
+        "Updated TicTacToe v1.1"
+      ]
+    },
+    {
+      "_version_": "1.1.21",
+      "_date_": "5 {{feb}} 2020",
+      "list": [
+        "Moved Info and My websites to About me tab",
+        "Moved Discord tab to About me tab"
+      ]
+    },
+    {
+      "_version_": "1.1.2",
+      "_date_": "3 {{feb}} 2020",
+      "list": [
+        "Fixed small bugs",
+        "Automatic New Year change",
+        "Changed some links",
+        "Changed Winter Night theme",
+        "Changed Winter theme"
+      ]
+    },
+    {
+      "_version_": "1.1.1",
+      "_date_": "4 {{jan}} 2020",
+      "list": [
+        "Fixed small bugs",
+        "Added Winter Night theme"
+      ]
+    },
+    {
+      "_version_": "1.1",
+      "_date_": "22 {{dec}} 2019",
+      "list": [
+        "Fixed small bugs",
+        "Added Languages to Settings tab",
+        "More phone friendly Navbar",
+        "Updated Clicker v0.2",
+        "Added countdown to new year"
+      ]
+    },
+    {
+      "_version_": "1.0.53",
+      "_date_": "20 {{dec}} 2019",
+      "list": [
+        "Fixed theme saving",
+        "Changed Navbar will be always on top"
+      ]
+    },
+    {
+      "_version_": "1.0.52",
+      "_date_": "8 {{dec}} 2019",
+      "list": [
+        "Added Winter theme",
+        "Rewrited theme system"
+      ]
+    },
+    {
+      "_version_": "1.0.51",
+      "_date_": "7 {{dec}} 2019",
+      "list": [
+        "Changed some buttons",
+        "Deleted Custom theme"
+      ]
+    },
+    {
+      "_version_": "1.0.5",
+      "_date_": "30 {{nov}} 2019",
+      "list": [
+        "Small bug fixes",
+        "More phone friendly UI",
+        "Created Tic Tac Toe v1.0"
+      ]
+    },
+    {
+      "_version_": "1.0.4",
+      "_date_": "27 {{oct}} 2019",
+      "list": [
+        "Small bug fixes",
+        "Fixed Error 404 not showing sometimes",
+        "Fixed wrong colours showing in Custom theme",
+        "Added other metods of input to Custom theme"
+      ]
+    },
+    {
+      "_version_": "1.0.3",
+      "_date_": "26 {{oct}} 2019",
+      "list": [
+        "Moved Theme to Settings navbar",
+        "Moved Changelog to Settings navbar",
+        "Added Halloween theme to Themes tab",
+        "Added own customization to Themes tab"
+      ]
+    },
+    {
+      "_version_": "1.0.2",
+      "_date_": "24 {{oct}} 2019",
+      "list": [
+        "Small bug fixes",
+        "Added Settings to the tab",
+        "Added Changelog to the tab",
+        "Added Guess the number to the Web Games tab",
+        "Added Tic Tac Toe to the Web Games tab"
+      ]
+    },
+    {
+      "_version_": "1.0.12",
+      "_date_": "23 {{oct}} 2019",
+      "list": [
+        "Updated Clicker v0.1",
+        "Changed Discord tab"
+      ]
+    },
+    {
+      "_version_": "1.0.11",
+      "_date_": "21 {{oct}} 2019",
+      "list": [
+        "Small bug fixes",
+        "Updated Clicker v0.0.2"
+      ]
+    },
+    {
+      "_version_": "1.0",
+      "_date_": "20 {{oct}} 2019",
+      "list": [
+        "Website is ONLINE!",
+        "Created Clicker v0.0.1"
+      ]
+    }
+  ]
+}

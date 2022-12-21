@@ -1,18 +1,34 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
 html,
 body {
     --navbar-height: 3rem;
 
-    padding: 0;
-    margin: 0;
     font-family: "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    transition: 300ms;
     background-color: #000;
+    transition: 300ms;
+    scroll-behavior: smooth;
+    scroll-padding-top: var(--navbar-height)
+}
+
+html,
+body,
+div#__next {
+    height: 100%;
 }
 
 @media (max-width: 500px) {
     html, body {
         --navbar-height: 4rem;
     }
+}
+
+p {
+    margin: 0;
 }
 
 * {
