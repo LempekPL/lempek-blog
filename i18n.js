@@ -3,6 +3,7 @@ module.exports = {
     "locales": ["en", "pl", "de"],
     "pages": {
         "*": ["common", "navbar"],
+        "/": ["blog"],
         "/changelog": ["changelog"],
         "/about": ["about"]
     },
