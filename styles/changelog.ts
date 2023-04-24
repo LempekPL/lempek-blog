@@ -2,14 +2,14 @@ import styled from "styled-components";
 
 export const TitleName = styled.p`
   margin-top: calc(var(--navbar-height) + 2rem);
+  color: var(--primary-text-color);
   text-align: center;
-  color: ${props => props.theme.text};
   font-weight: bold;
   font-size: 2rem;
 `;
 
 export const ChangeBox = styled.div`
-  color: ${props => props.theme.text};
+  color: var(--primary-text-color);
   text-align: center;
   display: flex;
   flex-direction: column;
@@ -19,7 +19,7 @@ export const ChangeBox = styled.div`
 `;
 
 export const ChangeName = styled.p`
-  background-color: ${props => props.theme.background};
+  background-color: var(--primary-background-color);
   margin-left: 12rem;
   margin-right: 12rem;
   padding: .25rem;

@@ -18,7 +18,12 @@ export const MainBox = styled.main`
   height: 100%;
   grid-column: 2;
   align-items: center;
-  background-color: ${props => props.theme.background_box};
+  background-color: var(--global-box-background-color);
   z-index: 1;
   box-shadow: 0 0 .5rem rgba(0,0,0,50%);
+  margin-bottom: 2rem;
+`;
+
+export const FlexSpace = styled.div`
+  flex-grow: 1;
 `;

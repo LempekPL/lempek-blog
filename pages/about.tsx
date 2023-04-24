@@ -1,11 +1,7 @@
-import {default as AboutComponent} from "../components/About";
+import {AboutComponent} from "../components/About";
 
 const About = () => {
-    return (
-        <>
-            <AboutComponent/>
-        </>
-    )
+    return <AboutComponent/>
 }
 
 export default About;

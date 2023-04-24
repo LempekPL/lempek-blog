@@ -1,7 +1,8 @@
 import type {IconName} from "@fortawesome/fontawesome-common-types";
+import {Property} from "csstype";
 
-export interface Socials {
+export type Socials = {
     name: IconName
     link: string
-    color: string
+    color: Property.Color
 }

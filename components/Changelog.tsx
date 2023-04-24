@@ -1,6 +1,6 @@
 import useTranslation from "next-translate/useTranslation";
-import {MainBox, MainLayout} from "../../styles/universal";
-import {ChangeBox, TitleName, ChangeName, ChangesList, Changes} from "../../styles/Changelog/changelog";
+import {MainBox, MainLayout} from "../styles/universal";
+import {ChangeBox, TitleName, ChangeName, ChangesList, Changes} from "../styles/changelog";
 
 interface ChangeType {
     _version_: string
@@ -8,9 +8,11 @@ interface ChangeType {
     list: string[]
 }
 
-const Changelog = () => {
+// TODO: get changelog from database
+export const ChangelogComponent = () => {
     const {t: c} = useTranslation("common");
     const {t} = useTranslation("changelog");
+
     const months_query = {
         jan: c("months.january"),
         feb: c("months.february"),
@@ -26,17 +28,18 @@ const Changelog = () => {
         dec: c("months.december")
     }
     const changes: ChangeType[] = t("changes", months_query, {returnObjects: true});
-    const changes_list = [];
+
+    const changesVersions: JSX.Element[] = [];
     for (let i = 0; i < changes.length; i++) {
         const changes_descriptions_list = [];
         for (let i = 0; i < changes[i].list.length; i++) {
             changes_descriptions_list.push(
                 <Changes>
-                    changes[i].list[i]
+                    {changes[i].list[i]}
                 </Changes>
             )
         }
-        changes_list.push(
+        changesVersions.push(
             <ChangeBox key={changes[i]._version_} id={changes[i]._version_}>
                 <ChangeName>
                     {`V${changes[i]._version_} - ${changes[i]._date_}`}
@@ -54,10 +57,8 @@ const Changelog = () => {
                 <TitleName>
                     LempekWebsite changelog
                 </TitleName>
-                {changes_list}
+                {changesVersions.map(item => item)}
             </MainBox>
         </MainLayout>
     </>
 }
-
-export default Changelog;

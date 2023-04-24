@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-export const NavBar = styled.nav`
-  background: ${props => props.theme.navbar_background};
+export const Navbar = styled.nav`
+  background: var(--navbar-background-color);
   transition: 300ms;
   position: fixed;
   display: flex;
-  justify-content: space-between;
   width: 100%;
   height: var(--navbar-height);
   z-index: 999;
@@ -14,7 +13,7 @@ export const NavBar = styled.nav`
 export const NavHome = styled.button`
   border: none;
   transition: 300ms;
-  font-size: 25px;
+  font-size: 1.5rem;
   background-color: #69e621;
   color: #000;
   cursor: pointer;
@@ -29,28 +28,17 @@ export const NavHome = styled.button`
     outline: royalblue solid 2px;
     outline-offset: -2px;
   }
-
-  //@media (max-width: 500px) {
-  //  padding: 0 2rem;
-  //}
-  //
-  //@media (max-width: 370px) {
-  //  padding: 0 1rem;
-  //}
 `;
 
-
-export const BunDev = styled.div`
+export const BunDev = styled.div<{$clicked: number}>`
   position: absolute;
   left: 2rem;
   top: -0.3rem;
   display: flex;
-  align-items: flex-start;
   z-index: -1;
   transition: 300ms;
   outline: none;
-  ${props => // @ts-ignore clicked is defined
-          props.clicked > 50 ? "transform: translateX(100%)" : ""};
+  ${props => props.$clicked > 50 ? "transform: translateX(100%)" : ""};
 
   img {
     height: calc(var(--navbar-height) + 0.5rem) !important;
@@ -61,7 +49,7 @@ export const BunDev = styled.div`
   span {
     margin-top: 0.5rem;
     font-size: 20px;
-    color: ${props => props.theme.navbar_text_button}
+    color: var(--navbar-text-color);
   }
 
   :focus-visible {
@@ -69,13 +57,10 @@ export const BunDev = styled.div`
   }
 `;
 
-export const RightSide = styled.div`
-  display: flex;
-  align-items: center;
-`;
 
+// TODO: make logging in
 export const UserIcon = styled.div`
-  height: ${props => "pl" === props?.lang ? "1rem" : "1.25rem"};
+  height: ${props => "pl" === props.lang ? "1rem" : "1.25rem"};
   display: inline-block;
   padding: 0 0.25rem 0 0;
 
@@ -87,7 +72,8 @@ export const UserIcon = styled.div`
 `;
 
 export const NavLogin = styled.button`
-  background-color: ${props => props.theme.navbar_background};
+  filter: ${props => ["dark", "black"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
+  background-color: var(--navbar-background-color);
   color: lime;
   border: 0.1rem solid lime;
   padding: 0 0.5rem;
@@ -96,14 +82,13 @@ export const NavLogin = styled.button`
   font-size: 1.5rem;
   text-decoration: none;
   cursor: pointer;
-  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
-
+  
   &:focus-visible {
     outline: royalblue solid 2px;
   }
 
   &:is(:hover, :focus-visible) {
-    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
+    filter: ${props => ["dark", "black"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 
   @media (max-width: 400px) {
@@ -113,17 +98,18 @@ export const NavLogin = styled.button`
   //  padding: 0;
   //}
 `;
+// TODO: ^
 
-export const NavDrop = styled.button`
-  background-color: ${props => props.theme.navbar_button};
-  color: ${props => props.theme.navbar_text_button};
-  transition: 100ms;
+export const NavDrop = styled.button<{$open: boolean, $closer: Function}>`
+  filter: ${props => ["dark", "black"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
+  background-color: var(--navbar-menu-button-background-color);
+  color: var(--navbar-menu-button-icon-color);
   width: var(--navbar-height);
   height: var(--navbar-height);
   border: none;
+  transition: 200ms;
   padding: 0;
   cursor: pointer;
-  filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(80%)" : "brightness(100%)"};
   overflow: hidden;
 
   &:focus-visible {
@@ -134,42 +120,28 @@ export const NavDrop = styled.button`
   div {
     svg {
       transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
-
       &:nth-child(1) {
-
-        opacity: ${props => // @ts-ignore
-                props.isOpen ? 1 : 0};
-        transform: translateY(${props => // @ts-ignore
-                props.isOpen ? "0" : "-100%"});
+        opacity: ${props => props.$open ? 1 : 0};
+        transform: translateY(${props => props.$open ? "0" : "-100%"});
       }
-
       &:nth-child(2) {
-        opacity: ${props => // @ts-ignore
-                props.isOpen ? 0 : 1};
-        transform: scale(0.8) translateY(${props => // @ts-ignore
-                props.isOpen ? "100%" : "0"});
+        opacity: ${props => props.$open ? 0 : 1};
+        transform: scale(0.8) translateY(${props => props.$open ? "100%" : "0"});
       }
     }
   }
 
   &:is(:hover, :focus-visible) {
-    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
+    filter: ${props => ["dark", "black"].includes(props.theme.type) ? "brightness(100%)" : "brightness(80%)"};
   }
 
   :active {
-    filter: ${props => ["dark", "dark+"].includes(props.theme.type) ? "brightness(110%)" : "brightness(70%)"};
+    filter: ${props => ["dark", "black"].includes(props.theme.type) ? "brightness(110%)" : "brightness(70%)"};
   }
 `;
 
 export const NavDropIcon = styled.div`
   height: 100%;
-  display: block;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  align-items: center;
-  justify-content: center;
-  box-sizing: unset;
 
   svg {
     position: absolute;

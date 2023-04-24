@@ -1,8 +1,8 @@
-import {E404TextBox} from "../../styles/E404/e404";
+import {E404TextBox} from "../styles/e404";
 import useTranslation from "next-translate/useTranslation";
-import {MainBox, MainLayout} from "../../styles/universal";
+import {MainBox, MainLayout} from "../styles/universal";
 
-const E404 = () => {
+export const E404Component = () => {
     const {t} = useTranslation("common");
 
     return <>
@@ -15,5 +15,3 @@ const E404 = () => {
         </MainLayout>
     </>
 }
-
-export default E404;

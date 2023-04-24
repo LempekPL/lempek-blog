@@ -5,21 +5,18 @@ export const PostsBox = styled.div`
   flex-direction: column;
   gap: 1rem;
   margin-top: 2rem;
-  justify-items: center;
   align-items: center;
 `;
 
 export const PostBox = styled.div`
+  background-color: var(--primary-background-color);
+  color: var(--primary-text-color);
   display: flex;
-  flex-direction: row;
-  //padding: 1.5rem;
   border-radius: 1.5rem;
-  background-color: ${props => props.theme.search_bar};
   height: 10rem;
   width: 45rem;
-  color: ${props => props.theme.text};
   box-shadow: 0 .2rem .25rem rgba(0,0,0,50%);
-  transition: .2s;
+  transition: 200ms;
   
   :is(:hover, :focus-visible) {
     box-shadow: 0 .4rem .45rem rgba(0,0,0,50%);
@@ -35,8 +32,8 @@ export const PostThumbnail = styled.div`
   img {
     border-radius: 1rem 0 0 1rem;
     object-position: top left;
+    object-fit: cover;
     //border-radius: 100%;
-    //object-fit: fill;
     //z-index: 1;
   }
   //img {

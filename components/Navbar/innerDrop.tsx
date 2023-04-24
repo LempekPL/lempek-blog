@@ -1,26 +1,24 @@
-import {forwardRef, Ref, useEffect, useImperativeHandle, useState} from "react";
+import {forwardRef, Ref, useImperativeHandle} from "react";
 import useTranslation from "next-translate/useTranslation";
 import useToggle from "../../hooks/useToggle";
-import THEMES from "../../util/theme/theme";
 import setLanguage from "next-translate/setLanguage";
 import {getCookie, setCookie} from "cookies-next";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {
-    OptionButtonStyle, OptionTextSelector,
-    OptionFAIcon, SettingsList,
-    SettingsItemButton,
+    RadioButtonOpener, RadioButtonOpenerText,
+    SettingsList, SettingsItemButton,
     SettingIcon, SettingName
 } from "../../styles/Navbar/innerDrop";
-import type {ChangeTheme, RefOptions} from "../../types/navbar";
-import useIcon from "../../hooks/useIcon";
+import type {ThemeState, InnerDropdown} from "../../types/navbar";
+import {localeList, themeList} from "../../types/navbar";
 
 const OptionList = forwardRef((
-    {isOpen, changeTheme}: { isOpen: boolean, changeTheme: ChangeTheme }
-    , ref: Ref<RefOptions>) => {
+    {isOpen, themeChanger: [themeName, setTheme]}: { isOpen: boolean, themeChanger: ThemeState },
+    ref: Ref<InnerDropdown>
+) => {
     const {t, lang} = useTranslation("navbar");
     const [openTheme, toggleTheme] = useToggle();
     const [openLang, toggleLang] = useToggle();
-    const [isTheme, setTheme] = useState(THEMES.DARK);
 
     // allow closing options in parent
     useImperativeHandle(ref, () => ({
@@ -40,54 +38,34 @@ const OptionList = forwardRef((
         });
     }
 
-    const changeT = (themeName: string) => {
-        changeTheme(themeName);
-        setTheme(themeName);
+    const themeButtons: JSX.Element[] = [];
+    for (const themeNameElement of themeList) {
+        if (JSON.parse(getCookie("EXPERIMENTS") as string || "{}")?.theme?.high_contrast !== true && themeNameElement === "high_contrast") continue;
+        themeButtons.push(<SettingButton
+            key={themeNameElement} currValue={themeName}
+            isOpen={openTheme} translation={t(themeNameElement)}
+            change={[themeNameElement, setTheme]}
+        />)
     }
 
-    useEffect(() => {
-        setTheme(getCookie("NEXT_THEME") as string || "dark")
-    }, []);
-
-    const buttons = [];
-    for (const themesKey in THEMES) {
-        // @ts-ignore
-        if (JSON.parse(getCookie("EXPERIMENTS") as string || "{}")?.theme?.high_contrast !== true && THEMES[themesKey] === "high_contrast") continue;
-        buttons.push(
-            <SettingButton
-                /* @ts-ignore */
-                key={THEMES[themesKey]} setValue={isTheme}
-                /* @ts-ignore */
-                isOpen={openTheme} translation={t(THEMES[themesKey])}
-                /* @ts-ignore */
-                change={[changeT, THEMES[themesKey]]}
-            />
-        )
-    }
-
-    const langs = ["en", "pl", "de"];
-    const buttonsLang = [];
-    for (const langValue of langs) {
-        if (JSON.parse(getCookie("EXPERIMENTS") as string || "{}")?.lang?.german !== true && langValue === "de") continue;
-        buttonsLang.push(
-            <SettingButton
-                key={langValue} setValue={lang}
-                isOpen={openLang} translation={t(langValue)}
-                change={[changeLocale, langValue]}
-            />
-        )
+    const localeButtons: JSX.Element[] = [];
+    for (const langName of localeList) {
+        if (JSON.parse(getCookie("EXPERIMENTS") as string || "{}")?.lang?.german !== true && langName === "de") continue;
+        localeButtons.push(<SettingButton
+            key={langName} currValue={lang}
+            isOpen={openLang} translation={t(langName)}
+            change={[langName, changeLocale]}
+        />)
     }
 
     return <>
         <OptionButton toggle={toggleTheme} isSelfOpen={openTheme} isOpen={isOpen} translation={t("theme")}/>
-        {/* @ts-ignore */}
-        <SettingsList isOpen={openTheme}>
-            {buttons}
+        <SettingsList>
+            {themeButtons.map((button) => button)}
         </SettingsList>
         <OptionButton toggle={toggleLang} isSelfOpen={openLang} isOpen={isOpen} translation={t("language")}/>
-        {/* @ts-ignore */}
-        <SettingsList isOpen={openLang}>
-            {buttonsLang}
+        <SettingsList>
+            {localeButtons.map((button) => button)}
         </SettingsList>
     </>;
 });
@@ -96,43 +74,32 @@ const OptionButton = (
     {toggle, translation, isSelfOpen, isOpen}:
         { toggle: () => void, translation: string, isSelfOpen: boolean, isOpen: boolean }
 ) => {
-    return <>
-        <OptionButtonStyle
-            onClick={() => {
-                toggle();
-            }} // @ts-ignore
-            tabIndex={isOpen ? "0" : "-1"}>
-            <OptionTextSelector>
-                {translation}
-                {/* @ts-ignore */}
-                <OptionFAIcon isSelfOpen={isSelfOpen}>
-                    {useIcon(<FontAwesomeIcon icon={["fas", "angle-down"]}/>)}
-                </OptionFAIcon>
-            </OptionTextSelector>
-        </OptionButtonStyle>
-    </>;
+    return <RadioButtonOpener
+        onClick={() => toggle()} tabIndex={isOpen ? 0 : -1}>
+        <RadioButtonOpenerText $selfOpen={isSelfOpen}>
+            {translation}
+            <span><FontAwesomeIcon icon={["fas", "angle-down"]}/></span>
+        </RadioButtonOpenerText>
+    </RadioButtonOpener>;
 }
 
-const SettingButton = (
-    {setValue, isOpen, translation, change}:
-        { setValue: string, isOpen: boolean, translation: string, change: [(_: string) => void, string] }
+const SettingButton = <T, >(
+    {currValue, isOpen, translation, change}:
+        { currValue: T, isOpen: boolean, translation: string, change: [T, (_: T) => void] }
 ) => {
-    const checkMark = useIcon(<FontAwesomeIcon icon={["fas", "circle-check"]}/>);
-    const xMark = useIcon(<FontAwesomeIcon icon={["far", "circle-xmark"]}/>);
+    const checkMark = <FontAwesomeIcon icon={["fas", "circle-check"]}/>;
+    const xMark = <FontAwesomeIcon icon={["far", "circle-xmark"]}/>;
 
-    return <>
-        {/* @ts-ignore */}
-        <SettingsItemButton isOpen={isOpen} tabIndex={isOpen ? "0" : "-1"} onClick={() => {
-            change[0](change[1]);
-        }}>
-            <SettingIcon>
-                {setValue === change[1] ? checkMark : xMark}
-            </SettingIcon>
-            <SettingName>
-                {translation}
-            </SettingName>
-        </SettingsItemButton>
-    </>;
+    return <SettingsItemButton $open={isOpen} tabIndex={isOpen ? 0 : -1} onClick={() => {
+        change[1](change[0]);
+    }}>
+        <SettingIcon>
+            {currValue === change[0] ? checkMark : xMark}
+        </SettingIcon>
+        <SettingName>
+            {translation}
+        </SettingName>
+    </SettingsItemButton>;
 }
 
 OptionList.displayName = "OptionList";

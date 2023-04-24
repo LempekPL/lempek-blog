@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import {Property} from "csstype";
 
 export const LempekAbout = styled.div`
   --self-margin: 2rem;
@@ -20,34 +21,33 @@ export const LempekAbout = styled.div`
 
 export const LempekImage = styled.div`
   position: relative;
+  margin: 0 1rem;
   img {
     border-radius: 100%;
-    object-fit: contain;
-    z-index: 1;
+    z-index: 2;
   }
 
-  :before {
-    border-radius: 50%;
-    z-index: -1;
+  :after {
+    border-radius: 100%;
     content: "";
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
     position: absolute;
-    background-size: 100% 100%;
-    background-image: url("/images/lempekIRL.png");
-    filter: blur(.25rem);
+    top: -1px;
+    bottom: 3px;
+    left: -1px;
+    right: -1px;
+    box-shadow: inset 0 0 .5rem 1rem var(--global-box-background-color);
+    z-index: 1;
   }
 `;
 
 export const LempekNames = styled.div`
   align-self: center;
-  color: ${props => props.theme.text};
+  position: relative;
+  color: var(--primary-text-color);
 `;
 
 export const Name = styled.div`
-  background-color: ${props => props.theme.background};
+  background-color: var(--primary-background-color);
   font-size: 3rem;
   font-weight: bold;
   text-align: center;
@@ -62,7 +62,7 @@ export const Name = styled.div`
 `;
 
 export const Nick = styled.div`
-  background-color: ${props => props.theme.background};
+  background-color: var(--primary-background-color);
   font-size: 2.5rem;
   font-weight: bold;
   text-align: center;
@@ -79,14 +79,13 @@ export const Nick = styled.div`
   ::after {
     content: "";
     position: absolute;
-
-    background-color: ${props => props.theme.background_box};
+    background-color: var(--global-box-background-color);
     right: -2rem;
     top: 0;
     height: 4rem;
     width: 2rem;
     border-top-left-radius: 2rem;
-    box-shadow: 0 -2rem 0 0 ${props => props.theme.background};
+    box-shadow: 0 -2rem 0 0 var(--primary-background-color);
     z-index: -1;
   }
 `;
@@ -99,71 +98,71 @@ export const LempekInformation = styled.div`
 `;
 
 export const LempekDescBox = styled.div`
-  color: ${props => props.theme.text};
+  color: var(--primary-text-color);
 `;
 
 export const LempekDesc = styled.p`
+  background-color: var(--primary-background-color);
   padding: 1rem;
   border-radius: 1rem;
-  background-color: ${props => props.theme.background};
   box-shadow: 0 .25rem .5rem rgba(0,0,0,50%);
 `;
 
 export const LinksList = styled.div`
+  background-color: var(--primary-background-color);
   display: flex;
   justify-content: center;
-  flex-direction: row;
   flex-wrap: wrap;
   gap: 1rem;
   padding: 1rem;
   border-radius: 1rem;
-  background-color: ${props => props.theme.background};
   box-shadow: 0 .25rem .5rem rgba(0,0,0,50%);
 `;
 
-export const LinksLink = styled.a`
-  overflow: hidden;
+export const LinksLink = styled.a<{$companyColor: Property.Color}>`
+  // background-color: ${props => props.theme.about_brand_buttons};
+  box-shadow: 0 0 0 ${props => props.$companyColor};
+  transition: 300ms;
+  border-radius: 100rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 12rem;
-  text-align: center;
   font-size: 1.5rem;
-  padding: 1rem 2rem;
+  height: 4rem;
   cursor: pointer;
   text-decoration: none;
   position: relative;
-  border-radius: 100rem;
-  border: 2px solid ${props => // @ts-ignore
-          props.companyColor};
   color: #fff;
-  background-color: ${props => props.theme.about_brand_buttons};
-  box-shadow: 0 0 .5rem ${props => // @ts-ignore
-          props.companyColor};
 
   :focus-visible {
     outline: royalblue solid 2px;
   }
+  
+  :hover {
+    box-shadow: 0 0 1rem ${props => props.$companyColor};
+  }
 
   :is(:focus-visible, :hover)::after {
-    transform: translateY(-100%);
+    border: 2px solid ${props => props.$companyColor};
+    background-color: ${props => props.theme.type == "dark" ? "#fff1" : "0001"};
   }
 
   :is(:focus-visible, :hover) span {
-    transition: .25s;
-    color: ${props => // @ts-ignore
-            props.theme.type == "dark" ? "#ccc" : props.companyColor};
+    color: ${props => props.theme.type == "dark" ? "#ccc" : props.$companyColor};
   }
 
   ::after {
+    border: 2rem solid ${props => props.$companyColor};
+    background-color: ${props => props.$companyColor};
+    border-radius: 300rem;
     transition: .25s;
     content: "";
-    background-color: ${props => // @ts-ignore
-            props.companyColor};
     position: absolute;
-    transform: translateY(0);
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    overflow: hidden;
   }
 `;
 

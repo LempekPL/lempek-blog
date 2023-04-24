@@ -1,24 +1,20 @@
 import {forwardRef, Ref} from "react";
-import {
-    Drop, DropButton, DropText, DropSettings, DropLogin
-} from "../../styles/Navbar/dropdown";
+import {Dropdown, DropButton, DropText, DropSettings, DropLogin} from "../../styles/Navbar/dropdown";
 import OptionList from "./innerDrop";
 import Link from "next/link";
 import useTranslation from "next-translate/useTranslation";
-import type {ChangeTheme, RefOptions} from "../../types/navbar";
+import type {ThemeState, InnerDropdown} from "../../types/navbar";
 
-const Dropdown = forwardRef((
-    {isOpen, changeTheme, closer}:
-        { isOpen: boolean, changeTheme: ChangeTheme, closer: () => void },
-    ref: Ref<RefOptions>) => {
+const DropdownComponent = forwardRef((
+    {isOpen, themeChanger, closer}: { isOpen: boolean, themeChanger: ThemeState, closer: VoidFunction },
+    ref: Ref<InnerDropdown>
+) => {
     const {t} = useTranslation("navbar");
 
     return <>
-        {/* @ts-ignore*/}
-        <Drop isOpen={isOpen}>
+        <Dropdown $open={isOpen}>
             <Link href="/" passHref tabIndex={-1}>
-                {/* @ts-ignore*/}
-                <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
+                <DropButton onClick={closer} tabIndex={isOpen ? 0 : -1}>
                     <DropText>
                         {t("home")}
                     </DropText>
@@ -33,35 +29,32 @@ const Dropdown = forwardRef((
             {/*    </DropLogin>*/}
             {/*</Link>*/}
             <Link href={"/about"} passHref tabIndex={-1}>
-                {/* @ts-ignore*/}
-                <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
+                <DropButton onClick={closer} tabIndex={isOpen ? 0 : -1}>
                     <DropText>
                         {t("about")}
                     </DropText>
                 </DropButton>
             </Link>
             <Link href={"/changelog"} passHref tabIndex={-1}>
-                {/* @ts-ignore*/}
-                <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
+                <DropButton onClick={closer} tabIndex={isOpen ? 0 : -1}>
                     <DropText>
                         {t("changelog")}
                     </DropText>
                 </DropButton>
             </Link>
             <Link href={"/experiments"} passHref tabIndex={-1}>
-                {/* @ts-ignore*/}
-                <DropButton onClick={closer} tabIndex={isOpen ? "0" : "-1"}>
+                <DropButton onClick={closer} tabIndex={isOpen ? 0 : -1}>
                     <DropText>
                         {t("experiments")}
                     </DropText>
                 </DropButton>
             </Link>
             <DropSettings>
-                <OptionList changeTheme={changeTheme} ref={ref} isOpen={isOpen}/>
+                <OptionList themeChanger={themeChanger} ref={ref} isOpen={isOpen}/>
             </DropSettings>
-        </Drop>
+        </Dropdown>
     </>;
 })
 
-Dropdown.displayName = "Dropdown";
-export default Dropdown;
+DropdownComponent.displayName = "Dropdown";
+export default DropdownComponent;

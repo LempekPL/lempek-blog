@@ -2,6 +2,24 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
+    /* IDE help */
+    --global-background-color: black;
+    --global-box-background-color: black;
+    --global-text-color: black;
+    --primary-background-color: black;
+    --primary-text-color: black;
+    --secondary-background-color: black;
+    --secondary-text-color: black;
+    --navbar-background-color: black;
+    --navbar-text-color: black;
+    --navbar-menu-button-background-color: black;
+    --navbar-menu-button-icon-color: black;
+    --navbar-dropdown-border-color: black;
+    --navbar-dropdown-background-color: black;
+    --navbar-dropdown-text-color: black;
+    --navbar-dropdown-settings-background-color: black;
+    --navbar-dropdown-settings-text-color: black;
 }
 
 html,
@@ -29,10 +47,6 @@ div#__next {
 
 p {
     margin: 0;
-}
-
-* {
-    box-sizing: border-box;
 }
 
 .bold {

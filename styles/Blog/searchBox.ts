@@ -1,17 +1,16 @@
 import styled from "styled-components";
 
 export const SearchBox = styled.div`
+  color: var(--primary-text-color);
   margin-top: calc(var(--navbar-height) + 1rem);
   margin-left: 5rem;
   margin-right: 5rem;
   text-align: center;
-  color: ${props => props.theme.text};
   display: flex;
-  flex-direction: row;
   height: 3rem;
 
   :is(:focus-visible, :hover, :focus-within) {
-    background: ${props => props.theme.search_bar};
+    background: var(--primary-background-color);
     box-shadow: 0 .2rem .2rem rgba(0, 0, 0, 50%);
   }
 
@@ -27,10 +26,10 @@ export const SearchBox = styled.div`
 `;
 
 export const SearchIcon = styled.div`
+  border: 2px solid var(--primary-background-color);
   width: 2.5rem;
   font-size: 1rem;
   border-radius: 100rem 0 0 100rem;
-  border: 2px solid ${props => props.theme.search_bar};
   border-right: none;
   display: flex;
   align-items: center;
@@ -48,24 +47,24 @@ export const SearchIcon = styled.div`
 `;
 
 export const SearchInput = styled.input`
-  color: ${props => props.theme.text};
+  color: var(--primary-text-color);
+  border: 2px solid var(--primary-background-color);
   width: 35rem;
   background: transparent;
-  border: 2px solid ${props => props.theme.search_bar};
   border-right: none;
   border-left: none;
   outline: none;
   font-size: 1.25rem;
 
   @media (max-width: 700px) {
-    border-left: 2px solid ${props => props.theme.search_bar};
+    border-left: 2px solid var(--primary-background-color);
   }
 `;
 
 export const SearchFilterBox = styled.div`
+  background-color: var(--primary-background-color);
+  border: 2px solid var(--primary-background-color);
   width: 12.5rem;
-  background-color: ${props => props.theme.search_bar};
-  border: 2px solid ${props => props.theme.search_bar};
   border-radius: 0 100rem 100rem 0;
   display: flex;
 

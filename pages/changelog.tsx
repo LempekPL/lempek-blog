@@ -1,11 +1,7 @@
-import {default as ChangelogComponent} from "../components/Changelog";
+import {ChangelogComponent} from "../components/Changelog";
 
 const Changelog = () => {
-    return (
-        <>
-            <ChangelogComponent/>
-        </>
-    )
+    return <ChangelogComponent/>
 }
 
 export default Changelog;
