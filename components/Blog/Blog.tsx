@@ -68,7 +68,6 @@ export const BlogComponent = ({posts}: { posts: Post[] }) => {
     }
 
     useEffect(() => {
-        console.log(debouncedKeyword)
         let orderedPosts = posts
             .filter(post => {
                 return post.name.toLowerCase().includes(debouncedKeyword.toLowerCase());

@@ -2,13 +2,15 @@
   "changes": [
     {
       "_version_": "3.0",
-      "_date_": "30 {{may}} 2023",
+      "_date_": "unknown 2023",
       "list": [
         "Separated backend from frontend",
         "Created experiments subpage",
-        "Changed frontend (aka UI)",
+        "Changed frontend",
         "Changed navbar",
         "Changed colors to match with new frontend",
+        "Changed searchbar",
+        "Changed style of posts",
         "Added animations to navbar and dropdown menu",
         "Added Lunar theme",
         "Added Home button in dropdown menu",
@@ -20,10 +22,7 @@
         "Updated About Lempek subpage",
         "Updated Changelog subpage",
         "Removed BunBun button in dropdown menu",
-        "Removed API button in dropdown menu",
-        "REST TO ADD TO CHANGELOG: (too tired to wtite nromaly)",
-        "better blog post show",
-        "better serch"
+        "Removed API button in dropdown menu"
       ]
     },
     {

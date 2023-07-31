@@ -2,20 +2,9 @@
   "changes": [
     {
       "_version_": "3.0",
-      "_date_": "22 {{dec}} 2022",
+      "_date_": "unknown 2023",
       "list": [
-        "Created experiments subpage",
-        "Changed backend",
-        "Changed website layout",
-        "Changed navbar",
-        "Added animations to navbar and dropdown menu",
-        "Added Lunar theme",
-        "Added Home button in dropdown menu",
-        "Added Experiments button in dropdown menu",
-        "Updated About Lempek subpage",
-        "Updated Changelog subpage",
-        "Removed BunBun button in dropdown menu",
-        "Removed API button in dropdown menu"
+        ":("
       ]
     },
     {
